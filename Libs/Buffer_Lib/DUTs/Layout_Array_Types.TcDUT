@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="Layout_Array_Types" Id="{077da193-1bf5-495c-b8bc-0d10ced50fa9}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE Layout_Array_Types :
+(
+	Bool_Type,
+	SInt_Type,
+	USInt_Type,
+	Int_Type,
+	UInt_Type,
+	DInt_Type,
+	UDInt_Type,
+	Real_Type,
+	String_Type
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

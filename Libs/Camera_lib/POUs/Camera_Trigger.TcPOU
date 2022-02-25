@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Camera_Trigger" Id="{ad000b63-df7b-425c-bc71-b905122b4615}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Camera_Trigger : UINT
+VAR_INPUT
+END_VAR
+
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="Camera_Trigger">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

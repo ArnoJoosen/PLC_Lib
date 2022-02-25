@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="ID_equal_to_ID" Id="{eb2f5e9c-4573-433a-8055-6463937ca6ab}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION ID_equal_to_ID : BOOL
+VAR_INPUT
+	ID1 :  REFERENCE TO Tag_ID;
+	ID2 :  REFERENCE TO Tag_ID;
+END_VAR
+
+VAR CONSTANT 
+	TagSize : UINT := 8;
+END_VAR
+
+VAR
+	i : UINT;
+	TagEqual : BOOL := TRUE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[FOR i:=0 TO TagSize-1 BY 1 DO
+	TagEqual := TagEqual AND ID1[i] = ID2[i];
+	// TODO Stop for loop waneer niet gelijk
+END_FOR
+
+ID_equal_to_ID := TagEqual;]]></ST>
+    </Implementation>
+    <LineIds Name="ID_equal_to_ID">
+      <LineId Id="7" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

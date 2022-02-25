@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Refactors>
+  <Renames>
+    <RenamedType>
+      <Type guid="a74c4c07-a188-498e-b74b-cd4262f8ed62">OUPUT_BUFFER_LAYOUT</Type>
+      <From>Ouput_Buffer_Layout</From>
+      <To>Buffer_Layout</To>
+    </RenamedType>
+    <RenamedType>
+      <Type guid="feeddd02-7a85-40e3-b8ff-da38959e8ed5">BUFFER_LAYOUT_SET_UDINT</Type>
+      <From>Buffer_Layout_Set_UDInt</From>
+      <To>Buffer_Layout_Set_UDInt_Array</To>
+    </RenamedType>
+    <RenamedType>
+      <Type guid="85060792-d177-4be9-9036-bbab4b2e6963">CAMERA_SET_LAYOUT</Type>
+      <From>Camera_Set_Layout</From>
+      <To>Camera_Set_Input_Layout</To>
+    </RenamedType>
+  </Renames>
+</Refactors>

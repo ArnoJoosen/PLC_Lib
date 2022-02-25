@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="LReal_From_ByteArray" Id="{0c8071a1-04ed-4586-af86-2bafa266e005}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION LReal_From_ByteArray : BOOL
+VAR_INPUT
+	Offset : UINT;
+END_VAR
+
+VAR_IN_OUT
+	Buffer : ARRAY [*] OF BYTE;
+END_VAR
+
+VAR
+	CopyArray : ARRAY [0..7] OF BYTE;
+	P_Real : POINTER TO REAL;
+	BufferSize : DINT;
+	i : UINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[BufferSize := UPPER_BOUND(Buffer, 1) - LOWER_BOUND(Buffer, 1); // berekent buffer size
+IF Offset + 8 > BufferSize THEN // chek of float in buffer past met offset
+	Real_From_BYTEArray := 0; // return
+ELSE
+	FOR i:=0 TO 7 BY 1 DO // copy data en swap naar een copy buffer
+    	CopyArray[i] := Buffer[(7 - i) + Offset];
+	END_FOR;
+	P_Real := ADR(CopyArray); // maak een pointer van de buffer
+	Real_From_BYTEArray := P_Real^; // return
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="LReal_From_ByteArray">
+      <LineId Id="18" Count="8" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

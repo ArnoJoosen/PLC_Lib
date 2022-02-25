@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="UInt_From_ByteArray" Id="{ac3873ec-5b15-4ab3-9af8-8a239b6e6c83}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION UInt_From_ByteArray : UINT
+VAR_INPUT
+	Offset : UINT;
+END_VAR
+
+VAR_IN_OUT
+	Buffer : ARRAY [*] OF BYTE;
+END_VAR
+
+VAR
+	CopyArray : ARRAY [0..1] OF BYTE;
+	P_UInt : POINTER TO REAL;
+	BufferSize : DINT;
+	i : UINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[BufferSize := UPPER_BOUND(Buffer, 1) - LOWER_BOUND(Buffer, 1); // berekent buffer size
+IF Offset + 2 > BufferSize THEN // chek of float in buffer past met offset
+	Real_From_BYTEArray := 0; // return
+ELSE
+	FOR i:=0 TO 1 BY 1 DO // copy data en swap naar een copy buffer
+    	CopyArray[i] := Buffer[(1 - i) + Offset];
+	END_FOR;
+	P_UInt := ADR(CopyArray); // maak een pinter van de buffer
+	Real_From_BYTEArray := P_UInt^; // return
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="UInt_From_ByteArray">
+      <LineId Id="18" Count="8" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

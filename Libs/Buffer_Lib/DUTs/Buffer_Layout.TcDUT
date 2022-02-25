@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="Buffer_Layout" Id="{93e03f0f-991a-4f0d-91b4-1abb7034c69c}">
+    <Declaration><![CDATA[TYPE Buffer_Layout :
+STRUCT
+	Buffer_Size : USINT := 64;
+	
+	// Bool
+	Enabel_Bool_Array : BOOL := TRUE; // Bit in in-sight explorer
+	Bool_Array_Offset : USINT := 40;
+	Bool_Amount : USINT := 4;
+	
+	// SInt
+	Enabel_SInt_Array : BOOL := FALSE; // int 8 bit in in-sight explorer
+	SInt_Array_Offset : USINT := 0;
+	SInt_Amount : USINT := 0;
+	
+	// USInt
+	Enabel_USInt_Array : BOOL := FALSE; // unifrom int 8 bit in in-sight explorer
+	USInt_Array_Offset : USINT := 0;
+	USInt_Amount : USINT := 0;
+	
+	// Int
+	Enabel_Int_Array : BOOL := TRUE; // int 16 bit in in-sight explorer
+	Int_Array_Offset : USINT := 0;
+	Int_Amount : USINT := 4;
+	
+	// UInt
+	Enabel_UInt_Array : BOOL := FALSE; // uniform int 16 bit in in-sight explorer
+	UInt_Array_Offset : USINT := 0;
+	UInt_Amount : USINT := 0;
+	
+	// DInt
+	Enabel_DInt_Array : BOOL := FALSE; // int 32 bit in in-sight explorer
+	DInt_Array_Offset : USINT := 0;
+	DInt_Amount : USINT := 0;
+	
+	// UDInt
+	Enabel_UDInt_Array : BOOL := FALSE; // unifrom int 32 bit in in-sight explorer
+	UDInt_Array_Offset : USINT := 0;
+	UDInt_Amount : USINT := 0;
+	
+	// Real
+	Enabel_Real_Array : BOOL := TRUE; // float 32 bit in in-sight explorer
+	Real_Array_Offset : USINT := 0;
+	Real_Amount : USINT := 0;
+	
+	// String
+	Enabel_String_Array : BOOL := TRUE; // string max 64 bytes in in-sight explorer
+	String_Lengts : ARRAY[0..7] OF USINT := 8; // lengte in bytes van elke string max 8 strings
+	String_Array_Offset : USINT := 55;
+	String_Amount : USINT := 1;
+	
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

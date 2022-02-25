@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="Cognex_Camera" Id="{c7ee11b1-2602-4f9b-ba3d-77304b0669ea}">
+    <Declaration><![CDATA[TYPE Cognex_Camera :
+STRUCT
+	// IO
+	Acquistion : S_Acquistion;
+	Command_Control : S_Command_Control;
+	Inspection : S_Inspection;
+	Soft_Event : S_Soft_event;
+	User_Data : S_User_Data;
+	
+	// local var
+	Input_Buffer_Layout : Buffer_Layout;
+	Ouput_Buffer_Layout : Buffer_Layout;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

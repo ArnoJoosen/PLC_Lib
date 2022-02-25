@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Buffer_Layout_Set_Bool_Array" Id="{64170c66-22af-4c41-a639-133b67fc81cb}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Buffer_Layout_Set_Bool_Array : UINT
+VAR_INPUT
+	Amount : UINT;
+END_VAR
+
+VAR_IN_OUT
+	Layout : Buffer_Layout;
+END_VAR
+
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="Buffer_Layout_Set_Bool_Array">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

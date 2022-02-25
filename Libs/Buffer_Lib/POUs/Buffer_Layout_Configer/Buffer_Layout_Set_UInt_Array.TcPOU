@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Buffer_Layout_Set_UInt_Array" Id="{b7a1c8a9-e44c-4e03-8626-413f084fed49}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Buffer_Layout_Set_UInt_Array : UINT
+VAR_INPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="Buffer_Layout_Set_UInt_Array">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

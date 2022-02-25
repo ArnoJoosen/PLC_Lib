@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="EterCAT_State" Id="{2c83d28b-ef82-4212-a608-9e7de67598b3}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE EterCAT_State :
+(
+	INIT,
+	PREOP,
+	BOOT,
+	SAFEOP,
+	OP,
+	Signals_Error,
+	Invalid_VendorID,
+	Disabeld,
+	Not_Present,
+	Signgals_Link_error,
+	Signals_unexpected_Link
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

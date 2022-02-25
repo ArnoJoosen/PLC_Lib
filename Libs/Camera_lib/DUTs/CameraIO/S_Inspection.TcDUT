@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="S_Inspection" Id="{0589589b-0d28-4eb9-b633-1a5717adfe86}">
+    <Declaration><![CDATA[TYPE S_Inspection :
+STRUCT
+	// control
+	BufferResultsEnable AT %Q* : BOOL;
+	InspectionResultsAck AT %Q* : BOOL;
+	SetUserData AT %Q* : BOOL;
+	ExecuteCommand AT %Q* : BOOL;
+	Clear_Error AT %Q* : BOOL;
+	
+	// satus
+	SystemBusy AT %I* : BOOL;
+	InspectionCompleted AT %I* : BOOL;
+	ResultsBufferOverrun AT %I* : BOOL;
+	ResultsValid AT %I* : BOOL;
+	CommandExecuting AT %I* : BOOL;
+	COmmandCompleted AT %I* : BOOL;
+	CommandFailed AT %I* : BOOL;
+	SetUserDataAck AT %I* : BOOL;
+	JobPass AT %I* : BOOL;
+	TestRunReady AT %I* : BOOL;
+	Error AT %I* : BOOL;
+	ErrorCode AT %I* : UINT;
+	
+	// Behavior
+	Behavior_SystemBusy AT %Q* : BOOL;
+	Behavior_Complete AT %Q* : BOOL;
+	Behavior_ResultsBufferOverflow AT %Q* : BOOL;
+	Behavior_ResultsValid AT %Q* : BOOL;
+	
+	InspectionID AT %I* : UINT;
+	ResultCode AT %I* : UINT;
+	InspectionResults AT %I* : ARRAY [0..63] OF BYTE;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

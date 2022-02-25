@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Get_Layout_Size" Id="{551e0f46-9f3b-4633-9a75-a8d0ff5c5ec4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Get_Layout_Size : UINT
+VAR_INPUT
+	Layout : REFERENCE TO Buffer_Layout;
+END_VAR
+VAR
+	Current_Buffer_Size : UINT := 0;
+	i : UINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// calculate buffer size
+// Bool array
+IF Layout.Enabel_Bool_Array THEN 
+	Current_Buffer_Size := Layout.Bool_Amount * 1; 
+END_IF;
+// SInt array
+IF Layout.Enabel_SInt_Array THEN 
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.SInt_Amount * 8); 
+END_IF;
+// USInt array
+IF Layout.Enabel_USInt_Array THEN 
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.USInt_Amount * 8);
+END_IF;
+// Int array
+IF Layout.Enabel_Int_Array THEN
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.Int_Amount * 16);
+END_IF;
+// UInt array
+IF Layout.Enabel_UInt_Array THEN
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.UInt_Amount * 16);
+END_IF;
+// DInt array
+IF Layout.Enabel_DInt_Array THEN
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.DInt_Amount * 32);
+END_IF;
+// UDInt array
+IF Layout.Enabel_UDInt_Array THEN
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.UDInt_Amount * 32);
+END_IF;
+// Real array
+IF Layout.Enabel_Real_Array THEN
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.Real_Amount * 32);
+END_IF;
+// String array
+IF Layout.Enabel_String_Array THEN
+	FOR i:=0 TO 3 BY 1 DO
+		Current_Buffer_Size := Current_Buffer_Size + (Layout.String_Amount * Layout.String_Lengts[i]);
+	END_FOR
+END_IF;
+
+Get_Layout_Size := Current_Buffer_Size;]]></ST>
+    </Implementation>
+    <LineIds Name="Get_Layout_Size">
+      <LineId Id="9" Count="37" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="49" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

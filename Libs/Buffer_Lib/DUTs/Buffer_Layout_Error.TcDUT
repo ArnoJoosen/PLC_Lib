@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="Buffer_Layout_Error" Id="{0858a157-5b2a-458d-ba3e-a84d9694e089}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE Buffer_Layout_Error :
+(
+	None := 2#00000000,
+	Overflow := 2#0000001,
+	Overlap := 2#0000010
+) BYTE;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

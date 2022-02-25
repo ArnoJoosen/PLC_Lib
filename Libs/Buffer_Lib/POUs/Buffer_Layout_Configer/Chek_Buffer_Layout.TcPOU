@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Chek_Buffer_Layout" Id="{2be24f20-7608-4a8e-a150-78d6070c33de}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Chek_Buffer_Layout : Buffer_Layout_Error
+VAR_INPUT
+	Layout : REFERENCE TO Buffer_Layout;
+END_VAR
+
+VAR
+	Current_Buffer_Size : USINT := 0;
+	i : UINT;
+	LowerBoud : USINT;
+	UpperBound : USINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// calculate buffer size
+// Bool array
+IF Layout.Enabel_Bool_Array THEN 
+	Current_Buffer_Size := Layout.Bool_Amount * 1; 
+END_IF;
+// SInt array
+IF Layout.Enabel_SInt_Array THEN 
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.SInt_Amount * 8); 
+END_IF;
+// USInt array
+IF Layout.Enabel_USInt_Array THEN 
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.USInt_Amount * 8);
+END_IF;
+// Int array
+IF Layout.Enabel_Int_Array THEN
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.Int_Amount * 16);
+END_IF;
+// UInt array
+IF Layout.Enabel_UInt_Array THEN
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.UInt_Amount * 16);
+END_IF;
+// DInt array
+IF Layout.Enabel_DInt_Array THEN
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.DInt_Amount * 32);
+END_IF;
+// UDInt array
+IF Layout.Enabel_UDInt_Array THEN
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.UDInt_Amount * 32);
+END_IF;
+// Real array
+IF Layout.Enabel_Real_Array THEN
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.Real_Amount * 32);
+END_IF;
+// String array
+IF Layout.Enabel_String_Array THEN
+	FOR i:=0 TO 3 BY 1 DO
+		Current_Buffer_Size := Current_Buffer_Size + (Layout.String_Amount * Layout.String_Lengts[i]);
+	END_FOR
+END_IF;
+
+IF Layout.Buffer_Size > Current_Buffer_Size THEN
+	Chek_Buffer_Layout := Chek_Buffer_Layout OR Buffer_Layout_Error.Overflow;
+END_IF
+
+
+// overlay chek
+// Bool array
+LowerBoud := Layout.Bool_Array_Offset;
+UpperBound := Layout.Bool_Array_Offset * Layout.Bool_Amount;
+IF Overlap_Chek(Layout:= Layout, Array_Type:= Layout_Array_Types.Bool_Type, LowerBound_Target:= LowerBoud, UpperBound_Target:= UpperBound) THEN
+	Chek_Buffer_Layout := Chek_Buffer_Layout OR Buffer_Layout_Error.Overlap;
+END_IF
+
+// SInt array
+LowerBoud := Layout.SInt_Array_Offset;
+UpperBound := Layout.SInt_Array_Offset * Layout.SInt_Amount;
+IF Overlap_Chek(Layout:= Layout, Array_Type:= Layout_Array_Types.SInt_Type, LowerBound_Target:= LowerBoud, UpperBound_Target:= UpperBound) THEN
+	Chek_Buffer_Layout := Chek_Buffer_Layout OR Buffer_Layout_Error.Overlap;
+END_IF
+
+// USInt array
+LowerBoud := Layout.USInt_Array_Offset;
+UpperBound := Layout.USInt_Array_Offset * Layout.USInt_Amount;
+IF Overlap_Chek(Layout:= Layout, Array_Type:= Layout_Array_Types.USInt_Type, LowerBound_Target:= LowerBoud, UpperBound_Target:= UpperBound) THEN
+	Chek_Buffer_Layout := Chek_Buffer_Layout OR Buffer_Layout_Error.Overlap;
+END_IF
+
+// Int array
+LowerBoud := Layout.Int_Array_Offset;
+UpperBound := Layout.Int_Array_Offset * Layout.Int_Amount;
+IF Overlap_Chek(Layout:= Layout, Array_Type:= Layout_Array_Types.Int_Type, LowerBound_Target:= LowerBoud, UpperBound_Target:= UpperBound) THEN
+	;
+END_IF
+
+// UInt array
+LowerBoud := Layout.UInt_Array_Offset;
+UpperBound := Layout.UInt_Array_Offset * Layout.UInt_Amount;
+IF Overlap_Chek(Layout:= Layout, Array_Type:= Layout_Array_Types.UInt_Type, LowerBound_Target:= LowerBoud, UpperBound_Target:= UpperBound) THEN
+	Chek_Buffer_Layout := Chek_Buffer_Layout OR Buffer_Layout_Error.Overlap;
+END_IF
+
+// DInt array
+LowerBoud := Layout.DInt_Array_Offset;
+UpperBound := Layout.DInt_Array_Offset * Layout.DInt_Amount;
+IF Overlap_Chek(Layout:= Layout, Array_Type:= Layout_Array_Types.DInt_Type, LowerBound_Target:= LowerBoud, UpperBound_Target:= UpperBound) THEN
+	Chek_Buffer_Layout := Chek_Buffer_Layout OR Buffer_Layout_Error.Overlap;
+END_IF
+
+// UDInt array
+LowerBoud := Layout.UDInt_Array_Offset;
+UpperBound := Layout.UDInt_Array_Offset * Layout.UDInt_Amount;
+IF Overlap_Chek(Layout:= Layout, Array_Type:= Layout_Array_Types.UDInt_Type, LowerBound_Target:= LowerBoud, UpperBound_Target:= UpperBound) THEN
+	Chek_Buffer_Layout := Chek_Buffer_Layout OR Buffer_Layout_Error.Overlap;
+END_IF
+
+// Real array
+LowerBoud := Layout.Real_Array_Offset;
+UpperBound := Layout.Real_Array_Offset * Layout.Real_Amount;
+IF Overlap_Chek(Layout:= Layout, Array_Type:= Layout_Array_Types.Real_Type, LowerBound_Target:= LowerBoud, UpperBound_Target:= UpperBound) THEN
+	Chek_Buffer_Layout := Chek_Buffer_Layout OR Buffer_Layout_Error.Overlap;
+END_IF
+
+// String array
+LowerBoud := Layout.String_Array_Offset;
+UpperBound := 0;
+FOR i:=0 TO Layout.String_Amount BY 1 DO
+	UpperBound := UpperBound + Layout.String_Lengts[i];
+END_FOR
+IF Overlap_Chek(Layout:= Layout, Array_Type:= Layout_Array_Types.String_Type, LowerBound_Target:= LowerBoud, UpperBound_Target:= UpperBound) THEN
+	Chek_Buffer_Layout := Chek_Buffer_Layout OR Buffer_Layout_Error.Overlap;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Chek_Buffer_Layout">
+      <LineId Id="7" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="49" Count="1" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="47" Count="1" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="51" Count="1" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="40" Count="1" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="69" Count="1" />
+      <LineId Id="73" Count="1" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="107" Count="1" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="155" Count="1" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="109" Count="2" />
+      <LineId Id="153" Count="1" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="112" Count="2" />
+      <LineId Id="151" Count="1" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="115" Count="1" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="149" Count="1" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="119" Count="1" />
+      <LineId Id="97" Count="0" />
+      <LineId Id="147" Count="1" />
+      <LineId Id="85" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="121" Count="1" />
+      <LineId Id="98" Count="0" />
+      <LineId Id="145" Count="1" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="125" Count="2" />
+      <LineId Id="143" Count="1" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="128" Count="2" />
+      <LineId Id="139" Count="1" />
+      <LineId Id="91" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="136" Count="2" />
+      <LineId Id="133" Count="1" />
+      <LineId Id="141" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

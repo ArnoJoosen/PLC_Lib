@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="RFID_Sensor_Detect" Id="{3809c1b7-b592-4b3f-89ec-357b213f79ca}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION RFID_Sensor_Detect : RFID_Sensor_Errors
+VAR_INPUT
+	Sensor :  REFERENCE TO RFID_Sensor;
+END_VAR
+
+VAR_IN_OUT
+	Q : BOOL;
+END_VAR
+
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF Sensor.IN_Not_Connected_To_Read_Write_Head THEN
+	RFID_Sensor_Detect := RFID_Sensor_Errors.Not_Connected;
+	Q := FALSE;
+ELSIF Sensor.IN_Antenna_Detuned_AT_HF_Read_Write_Head THEN
+	RFID_Sensor_Detect := RFID_Sensor_Errors.Antenna_Detuned;
+	Q := FALSE;
+ELSE
+	RFID_Sensor_Detect := RFID_Sensor_Errors.None;
+	Q := Sensor.IN_Tag_Presant_At_R_W_Head;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="RFID_Sensor_Detect">
+      <LineId Id="19" Count="1" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="32" Count="1" />
+      <LineId Id="22" Count="2" />
+      <LineId Id="21" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
