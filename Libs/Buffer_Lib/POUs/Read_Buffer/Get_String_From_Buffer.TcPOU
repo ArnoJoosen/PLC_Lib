@@ -38,15 +38,15 @@ IF Num > Layout.Real_Amount THEN
 	RETURN;
 END_IF
 
-Offset := Layout.Real_Array_Offset + (Num * 4);
+Offset := Layout.Real_Array_Offset + (Num * 9);
 
-IF Offset + 2 > BufferSize THEN // chek of float in buffer past met offset
+IF Offset + 8 > BufferSize THEN // chek of float in buffer past met offset
 	Out := '';
 	Get_Real_From_Buffer := Buffer_Error.Read_Error; // return error read out of bouds van arry
 	RETURN;
 ELSE
-	FOR i:=0 TO 7 BY 1 DO // copy data en swap naar een copy buffer
-    	CopyArray[i] := Buffer[(7 - i) + Offset];
+	FOR i:=0 TO 8 BY 1 DO // copy data en swap naar een copy buffer
+    	CopyArray[i] := Buffer[(8 - i) + Offset];
 	END_FOR;
 	P_Int := ADR(CopyArray); // maak een pinter van de buffer
 	Get_Int_From_Buffer := Buffer_Error.None;
