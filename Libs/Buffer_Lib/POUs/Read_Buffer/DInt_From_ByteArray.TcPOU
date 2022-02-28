@@ -4,6 +4,7 @@
     <Declaration><![CDATA[FUNCTION DInt_From_ByteArray : DINT
 VAR_INPUT
 	Offset : UINT;
+	Layout : REFERENCE TO Buffer_Layout;
 END_VAR
 
 VAR_IN_OUT

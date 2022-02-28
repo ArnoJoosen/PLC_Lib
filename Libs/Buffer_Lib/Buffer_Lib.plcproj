@@ -29,33 +29,6 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Buffer_Layout_Configer\Buffer_Layout_Set_Bool_Array.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Buffer_Layout_Configer\Buffer_Layout_Set_DInt_Array.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Buffer_Layout_Configer\Buffer_Layout_Set_Int_Array.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Buffer_Layout_Configer\Buffer_Layout_Set_Real_Array.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Buffer_Layout_Configer\Buffer_Layout_Set_SInt_Array.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Buffer_Layout_Configer\Buffer_Layout_Set_String_Array.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Buffer_Layout_Configer\Buffer_Layout_Set_UDInt_Array.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Buffer_Layout_Configer\Buffer_Layout_Set_UInt_Array.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Buffer_Layout_Configer\Buffer_Layout_Set_USInt_Array.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\Buffer_Layout_Configer\Chek_Buffer_Layout.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -63,6 +36,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Buffer_Layout_Configer\Overlap_Chek.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Buffer_Layout_Configer\Set_Buffer_Layout_Array.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Read_Buffer\DInt_From_ByteArray.TcPOU">
@@ -108,6 +87,11 @@
       <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc3_Module</Namespace>
     </PlaceholderReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Buffer_Lib.tmc">
+      <SubType>Content</SubType>
+    </None>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>

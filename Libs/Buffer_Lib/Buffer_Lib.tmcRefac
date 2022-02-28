@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Refactors>
+  <Renames>
+    <RenamedType>
+      <Type guid="0858a157-5b2a-458d-ba3e-a84d9694e089">BUFFER_LAYOUT_ERROR</Type>
+      <From>Buffer_Layout_Error</From>
+      <To>Buffer_Error</To>
+    </RenamedType>
+  </Renames>
+</Refactors>

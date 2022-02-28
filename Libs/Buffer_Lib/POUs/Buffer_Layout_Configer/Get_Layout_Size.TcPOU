@@ -16,29 +16,9 @@ END_VAR
 IF Layout.Enabel_Bool_Array THEN 
 	Current_Buffer_Size := Layout.Bool_Amount * 1; 
 END_IF;
-// SInt array
-IF Layout.Enabel_SInt_Array THEN 
-	Current_Buffer_Size := Current_Buffer_Size + (Layout.SInt_Amount * 8); 
-END_IF;
-// USInt array
-IF Layout.Enabel_USInt_Array THEN 
-	Current_Buffer_Size := Current_Buffer_Size + (Layout.USInt_Amount * 8);
-END_IF;
 // Int array
 IF Layout.Enabel_Int_Array THEN
 	Current_Buffer_Size := Current_Buffer_Size + (Layout.Int_Amount * 16);
-END_IF;
-// UInt array
-IF Layout.Enabel_UInt_Array THEN
-	Current_Buffer_Size := Current_Buffer_Size + (Layout.UInt_Amount * 16);
-END_IF;
-// DInt array
-IF Layout.Enabel_DInt_Array THEN
-	Current_Buffer_Size := Current_Buffer_Size + (Layout.DInt_Amount * 32);
-END_IF;
-// UDInt array
-IF Layout.Enabel_UDInt_Array THEN
-	Current_Buffer_Size := Current_Buffer_Size + (Layout.UDInt_Amount * 32);
 END_IF;
 // Real array
 IF Layout.Enabel_Real_Array THEN
@@ -54,7 +34,10 @@ END_IF;
 Get_Layout_Size := Current_Buffer_Size;]]></ST>
     </Implementation>
     <LineIds Name="Get_Layout_Size">
-      <LineId Id="9" Count="37" />
+      <LineId Id="9" Count="4" />
+      <LineId Id="22" Count="2" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="38" Count="8" />
       <LineId Id="7" Count="0" />
       <LineId Id="50" Count="0" />
       <LineId Id="49" Count="0" />

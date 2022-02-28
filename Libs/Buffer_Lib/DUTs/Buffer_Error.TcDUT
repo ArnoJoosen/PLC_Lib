@@ -1,20 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
-  <DUT Name="Layout_Array_Types" Id="{077da193-1bf5-495c-b8bc-0d10ced50fa9}">
+  <DUT Name="Buffer_Error" Id="{0858a157-5b2a-458d-ba3e-a84d9694e089}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 {attribute 'strict'}
-TYPE Layout_Array_Types :
+TYPE Buffer_Error :
 (
-	Bool_Type,
-	SInt_Type,
-	USInt_Type,
-	Int_Type,
-	UInt_Type,
-	DInt_Type,
-	UDInt_Type,
-	Real_Type,
-	String_Type
-);
+	None := 0,
+	Overflow := 1,
+	Array_Not_Enabelt := 2,
+	Array_To_Small := 3
+) UINT;
 END_TYPE
 ]]></Declaration>
   </DUT>

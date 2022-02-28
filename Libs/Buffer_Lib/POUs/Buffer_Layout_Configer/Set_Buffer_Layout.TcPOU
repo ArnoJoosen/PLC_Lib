@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Set_Buffer_Layout" Id="{6f5bf570-96c4-4372-a41d-eb5b698ff879}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Set_Buffer_Layout : Buffer_Error
+VAR_INPUT
+	Buffer_Size : USINT;
+	Bool_Amount : USINT;
+	Int_Amount : USINT;
+	Real_Amount : USINT;
+	String_Amount : USINT;
+END_VAR
+
+VAR_IN_OUT
+	Layout : Buffer_Layout;
+END_VAR
+
+VAR
+	ClearLayout : Buffer_Layout;
+	CurrentSize : USINT := 0;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Layout.Buffer_Size := Buffer_Size;
+
+IF Bool_Amount > 0 THEN
+	ClearLayout.Bool_Amount := Bool_Amount;
+	ClearLayout.Bool_Array_Offset := CurrentSize;
+	ClearLayout.Enabel_Bool_Array := TRUE;
+	CurrentSize := CurrentSize + (Bool_Amount * 1);
+ELSE
+	Layout.Enabel_Bool_Array := FALSE;
+END_IF
+
+IF Int_Amount > 0 THEN
+	ClearLayout.Int_Amount := Int_Amount;
+	ClearLayout.Int_Array_Offset := CurrentSize;
+	ClearLayout.Enabel_Int_Array := TRUE;
+	CurrentSize := CurrentSize + (Int_Amount * 2);
+ELSE
+	Layout.Enabel_Int_Array := FALSE;
+END_IF
+
+IF Real_Amount > 0 THEN
+	ClearLayout.Real_Amount := Real_Amount;
+	ClearLayout.Real_Array_Offset := CurrentSize;
+	Layout.Enabel_Real_Array := TRUE;
+	CurrentSize := CurrentSize + (Real_Amount * 4);
+ELSE
+	Layout.Enabel_Real_Array := FALSE;
+END_IF
+
+IF String_Amount > 0 THEN
+	ClearLayout.String_Amount := String_Amount;
+	ClearLayout.String_Array_Offset := CurrentSize;
+	Layout.Enabel_String_Array := TRUE;
+	CurrentSize := CurrentSize + (String_Amount * 8);
+ELSE
+	Layout.Enabel_String_Array := FALSE;
+END_IF
+
+IF Layout.Buffer_Size < Get_Layout_Size(Layout:= ClearLayout) THEN
+	Set_Buffer_Layout := Buffer_Error.Overflow;
+ELSE
+	Layout := ClearLayout;
+	Set_Buffer_Layout := Buffer_Error.None;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Set_Buffer_Layout">
+      <LineId Id="29" Count="1" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="23" Count="1" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="72" Count="1" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="41" Count="1" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="74" Count="1" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="47" Count="1" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="80" Count="2" />
+      <LineId Id="79" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
