@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
-  <POU Name="Real_From_Buffer" Id="{ec1a2110-8ce0-4579-be76-7cbfd0d9f36b}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION Real_From_Buffer : REAL
+  <POU Name="Get_String_From_Buffer" Id="{cf938f01-a79f-43ce-b306-61e357148e05}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Get_String_From_Buffer : BOOL
 VAR_INPUT
 	Num : USINT;
 	Layout : REFERENCE TO Buffer_Layout;
@@ -9,13 +9,13 @@ END_VAR
 
 VAR_IN_OUT
 	Buffer : ARRAY [*] OF BYTE;
-	Out : REAL;
+	Out : STRING[8];
 END_VAR
 
 VAR
 	Offset : USINT;
-	CopyArray : ARRAY [0..3] OF BYTE;
-	P_Int : POINTER TO REAL;
+	CopyArray : ARRAY [0..7] OF BYTE;
+	P_Int : POINTER TO STRING[8];
 	BufferSize : DINT;
 	i : UINT;
 END_VAR
@@ -24,37 +24,37 @@ END_VAR
       <ST><![CDATA[BufferSize := UPPER_BOUND(Buffer, 1) - LOWER_BOUND(Buffer, 1); // berekent buffer size
 
 IF BufferSize = Layout.Buffer_Size THEN
-	Real_From_Buffer := Buffer_Error.Layout_Not_Size_Buffer; // return error dat buffer size niet overeen komt met buffer layout
+	Get_Real_From_Buffer := Buffer_Error.Layout_Not_Size_Buffer; // return error dat buffer size niet overeen komt met buffer layout
 	RETURN;
 END_IF
 
 IF NOT Layout.Enabel_Real_Array THEN
-	Real_From_Buffer := Buffer_Error.Array_Not_Enabelt; // return error data array niet enabelt is
+	Get_Real_From_Buffer := Buffer_Error.Array_Not_Enabelt; // return error data array niet enabelt is
 	RETURN;
 END_IF
 
 IF Num > Layout.Real_Amount THEN
-	Real_From_Buffer := Buffer_Error.Array_To_Small; // return error data de num niet in de type array past
+	Get_Real_From_Buffer := Buffer_Error.Array_To_Small; // return error data de num niet in de type array past
 	RETURN;
 END_IF
 
 Offset := Layout.Real_Array_Offset + (Num * 4);
 
 IF Offset + 2 > BufferSize THEN // chek of float in buffer past met offset
-	Out := 0;
-	Real_From_Buffer := Buffer_Error.Read_Error; // return error read out of bouds van arry
+	Out := '';
+	Get_Real_From_Buffer := Buffer_Error.Read_Error; // return error read out of bouds van arry
 	RETURN;
 ELSE
-	FOR i:=0 TO 3 BY 1 DO // copy data en swap naar een copy buffer
-    	CopyArray[i] := Buffer[(3 - i) + Offset];
+	FOR i:=0 TO 7 BY 1 DO // copy data en swap naar een copy buffer
+    	CopyArray[i] := Buffer[(7 - i) + Offset];
 	END_FOR;
 	P_Int := ADR(CopyArray); // maak een pinter van de buffer
-	Int_From_Buffer := Buffer_Error.None;
+	Get_Int_From_Buffer := Buffer_Error.None;
 	Out := P_Int^; // return
 END_IF]]></ST>
     </Implementation>
-    <LineIds Name="Real_From_Buffer">
-      <LineId Id="70" Count="29" />
+    <LineIds Name="Get_String_From_Buffer">
+      <LineId Id="8" Count="29" />
       <LineId Id="7" Count="0" />
     </LineIds>
   </POU>

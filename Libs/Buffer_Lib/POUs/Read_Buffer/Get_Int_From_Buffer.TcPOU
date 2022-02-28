@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Get_Int_From_Buffer" Id="{2a7eb21e-75db-4eea-9bd1-2df58f80b530}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Get_Int_From_Buffer : Buffer_Error
+VAR_INPUT
+	Num : USINT;
+	Layout : REFERENCE TO Buffer_Layout;
+END_VAR
+
+VAR_IN_OUT
+	Buffer : ARRAY [*] OF BYTE;
+	Out : INT;
+END_VAR
+
+VAR
+	Offset : USINT;
+	CopyArray : ARRAY [0..1] OF BYTE;
+	P_Int : POINTER TO INT;
+	BufferSize : DINT;
+	i : UINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[BufferSize := UPPER_BOUND(Buffer, 1) - LOWER_BOUND(Buffer, 1); // berekent buffer size
+
+IF BufferSize = Layout.Buffer_Size THEN
+	Get_Int_From_Buffer := Buffer_Error.Layout_Not_Size_Buffer; // return error dat buffer size niet overeen komt met buffer layout
+	RETURN;
+END_IF
+
+IF NOT Layout.Enabel_Int_Array THEN
+	Get_Int_From_Buffer := Buffer_Error.Array_Not_Enabelt; // return error data array niet enabelt is
+	RETURN;
+END_IF
+
+IF Num > Layout.Int_Amount THEN
+	Get_Int_From_Buffer := Buffer_Error.Array_To_Small; // return error data de num niet in de type array past
+	RETURN;
+END_IF
+
+Offset := Layout.Int_Array_Offset + (Num * 2);
+
+IF Offset + 2 > BufferSize THEN // chek of float in buffer past met offset
+	Out := 0; // return
+	Get_Int_From_Buffer := Buffer_Error.Read_Error; // return error read out of bouds van arry
+	RETURN;
+ELSE
+	FOR i:=0 TO 1 BY 1 DO // copy data en swap naar een copy buffer
+    	CopyArray[i] := Buffer[(1 - i) + Offset];
+	END_FOR;
+	P_Int := ADR(CopyArray); // maak een pinter van de buffer
+	Get_Int_From_Buffer := Buffer_Error.None;
+	Out := P_Int^; // return
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Get_Int_From_Buffer">
+      <LineId Id="120" Count="29" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Set_Real_From_Buffer" Id="{536aba32-6d6e-4e30-9671-c2f285fb0c17}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Set_Real_From_Buffer : Buffer_Error
+VAR_INPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="Set_Real_From_Buffer">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

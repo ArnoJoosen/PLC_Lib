@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
-  <POU Name="Bool_From_Buffer" Id="{b573418b-f7a5-4a55-9649-f2f572babd57}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION Bool_From_Buffer : Buffer_Error
+  <POU Name="Get_Bool_From_Buffer" Id="{b573418b-f7a5-4a55-9649-f2f572babd57}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Get_Bool_From_Buffer : Buffer_Error
 VAR_INPUT
 	Num : USINT;
 	Layout : REFERENCE TO Buffer_Layout;
@@ -24,17 +24,17 @@ END_VAR
       <ST><![CDATA[BufferSize := UPPER_BOUND(Buffer, 1) - LOWER_BOUND(Buffer, 1); // berekent buffer size
 
 IF BufferSize = Layout.Buffer_Size THEN
-	Bool_From_Buffer := Buffer_Error.Layout_Not_Size_Buffer; // return error dat buffer size niet overeen komt met buffer layout
+	Get_Bool_From_Buffer := Buffer_Error.Layout_Not_Size_Buffer; // return error dat buffer size niet overeen komt met buffer layout
 	RETURN;
 END_IF
 
 IF NOT Layout.Enabel_Bool_Array THEN
-	Bool_From_Buffer := Buffer_Error.Array_Not_Enabelt; // return error data array niet enabelt is
+	Get_Bool_From_Buffer := Buffer_Error.Array_Not_Enabelt; // return error data array niet enabelt is
 	RETURN;
 END_IF
 
 IF Num > Layout.Bool_Amount THEN
-	Bool_From_Buffer := Buffer_Error.Array_To_Small; // return error data de num niet in de type array past
+	Get_Bool_From_Buffer := Buffer_Error.Array_To_Small; // return error data de num niet in de type array past
 	RETURN;
 END_IF
 
@@ -42,21 +42,17 @@ Offset := Layout.Bool_Array_Offset + (Num * 1);
 
 IF Offset > BufferSize THEN // chek of float in buffer past met offset
 	Out := FALSE; // return
-	Bool_From_Buffer := Buffer_Error.Read_Error; // return error read out of bouds van arry
+	Get_Bool_From_Buffer := Buffer_Error.Read_Error; // return error read out of bouds van arry
 	RETURN;
 ELSE
 	CopyByte := Buffer[Offset];
 	P_Int := ADR(CopyByte); // maak een pinter van de buffer
-	Bool_From_Buffer := Buffer_Error.None;
+	Get_Bool_From_Buffer := Buffer_Error.None;
 	Out := P_Int^; // return
 END_IF]]></ST>
     </Implementation>
-    <LineIds Name="Bool_From_Buffer">
-      <LineId Id="13" Count="17" />
-      <LineId Id="58" Count="4" />
-      <LineId Id="36" Count="0" />
-      <LineId Id="56" Count="0" />
-      <LineId Id="40" Count="2" />
+    <LineIds Name="Get_Bool_From_Buffer">
+      <LineId Id="81" Count="27" />
       <LineId Id="57" Count="0" />
     </LineIds>
   </POU>

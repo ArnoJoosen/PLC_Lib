@@ -35,16 +35,19 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Read_Buffer\Bool_From_Buffer.TcPOU">
+    <Compile Include="POUs\Read_Buffer\Get_Bool_From_Buffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Read_Buffer\Int_From_Buffer.TcPOU">
+    <Compile Include="POUs\Read_Buffer\Get_Int_From_Buffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Read_Buffer\Real_From_Buffer.TcPOU">
+    <Compile Include="POUs\Read_Buffer\Get_Real_From_Buffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Read_Buffer\String_From_Buffer.TcPOU">
+    <Compile Include="POUs\Read_Buffer\Get_String_From_Buffer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Wread_Buffer\Set_Bool_Fom_Buffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
