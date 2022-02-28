@@ -28,7 +28,7 @@ IF Bool_Amount > 0 THEN
 	ClearLayout.Enabel_Bool_Array := TRUE;
 	CurrentSize := CurrentSize + (Bool_Amount * 1);
 ELSE
-	Layout.Enabel_Bool_Array := FALSE;
+	ClearLayout.Enabel_Bool_Array := FALSE;
 END_IF
 
 IF Int_Amount > 0 THEN
@@ -37,7 +37,7 @@ IF Int_Amount > 0 THEN
 	ClearLayout.Enabel_Int_Array := TRUE;
 	CurrentSize := CurrentSize + (Int_Amount * 2);
 ELSE
-	Layout.Enabel_Int_Array := FALSE;
+	ClearLayout.Enabel_Int_Array := FALSE;
 END_IF
 
 IF Real_Amount > 0 THEN
@@ -52,10 +52,10 @@ END_IF
 IF String_Amount > 0 THEN
 	ClearLayout.String_Amount := String_Amount;
 	ClearLayout.String_Array_Offset := CurrentSize;
-	Layout.Enabel_String_Array := TRUE;
-	CurrentSize := CurrentSize + (String_Amount * 8);
+	ClearLayout.Enabel_String_Array := TRUE;
+	CurrentSize := CurrentSize + (String_Amount * 9);
 ELSE
-	Layout.Enabel_String_Array := FALSE;
+	ClearLayout.Enabel_String_Array := FALSE;
 END_IF
 
 IF Layout.Buffer_Size < Get_Layout_Size(Layout:= ClearLayout) THEN

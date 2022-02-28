@@ -17,10 +17,22 @@
     <LibraryReferences>{db05e458-fa73-46d4-b0f3-35d0c0ff2110}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\Bool_ByteArray.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\Buffer_Layout.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\Buffer_Error.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\Int_ByteArray.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\Real_ByteArray.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\String_ByteArray.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
@@ -48,6 +60,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Wread_Buffer\Set_Bool_Fom_Buffer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Wread_Buffer\Set_Int_From_Buffer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Wread_Buffer\Set_Real_From_Buffer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Wread_Buffer\Set_String_From_Buffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

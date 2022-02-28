@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="Bool_ByteArray" Id="{32fe4b61-2f9b-49dd-aeb9-584f55cca871}">
+    <Declaration><![CDATA[TYPE Bool_ByteArray :
+UNION
+	Value : BOOL;
+	AValue:  BYTE;
+END_UNION
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

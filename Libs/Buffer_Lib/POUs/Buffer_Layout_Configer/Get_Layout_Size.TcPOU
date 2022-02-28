@@ -18,17 +18,15 @@ IF Layout.Enabel_Bool_Array THEN
 END_IF;
 // Int array
 IF Layout.Enabel_Int_Array THEN
-	Current_Buffer_Size := Current_Buffer_Size + (Layout.Int_Amount * 16);
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.Int_Amount * 2);
 END_IF;
 // Real array
 IF Layout.Enabel_Real_Array THEN
-	Current_Buffer_Size := Current_Buffer_Size + (Layout.Real_Amount * 32);
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.Real_Amount * 4);
 END_IF;
 // String array
 IF Layout.Enabel_String_Array THEN
-	FOR i:=0 TO 3 BY 1 DO
-		Current_Buffer_Size := Current_Buffer_Size + (Layout.String_Amount * Layout.String_Lengts[i]);
-	END_FOR
+	Current_Buffer_Size := Current_Buffer_Size + (Layout.String_Amount * 8);
 END_IF;
 
 Get_Layout_Size := Current_Buffer_Size;]]></ST>
@@ -37,7 +35,8 @@ Get_Layout_Size := Current_Buffer_Size;]]></ST>
       <LineId Id="9" Count="4" />
       <LineId Id="22" Count="2" />
       <LineId Id="59" Count="0" />
-      <LineId Id="38" Count="8" />
+      <LineId Id="38" Count="5" />
+      <LineId Id="46" Count="0" />
       <LineId Id="7" Count="0" />
       <LineId Id="50" Count="0" />
       <LineId Id="49" Count="0" />

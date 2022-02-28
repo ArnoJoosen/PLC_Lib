@@ -3,14 +3,54 @@
   <POU Name="Set_Bool_Fom_Buffer" Id="{340d57b3-98c1-48b8-8fe5-c9394811b3da}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION Set_Bool_Fom_Buffer : Buffer_Error
 VAR_INPUT
+	In : BOOL;
+	Num : USINT;
+	Layout : REFERENCE TO Buffer_Layout;
 END_VAR
+
+VAR_IN_OUT
+	Buffer : ARRAY [*] OF BYTE;
+END_VAR
+
 VAR
+	Offset : USINT;
+	BufferSize : DINT;
+	U_Int : Bool_ByteArray;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[BufferSize := UPPER_BOUND(Buffer, 1) - LOWER_BOUND(Buffer, 1); // berekent buffer size
+
+IF BufferSize = Layout.Buffer_Size THEN
+	Set_Bool_Fom_Buffer := Buffer_Error.Layout_Not_Size_Buffer; // return error dat buffer size niet overeen komt met buffer layout
+	RETURN;
+END_IF
+
+IF NOT Layout.Enabel_Bool_Array THEN
+	Set_Bool_Fom_Buffer := Buffer_Error.Array_Not_Enabelt; // return error data array niet enabelt is
+	RETURN;
+END_IF
+
+IF Num > Layout.Bool_Amount THEN
+	Set_Bool_Fom_Buffer := Buffer_Error.Array_To_Small; // return error data de num niet in de type array past
+	RETURN;
+END_IF
+
+Offset := Layout.Bool_Array_Offset + Num;
+
+IF Offset > BufferSize THEN
+	Set_Bool_Fom_Buffer := Buffer_Error.Wread_Error;
+	RETURN;
+ELSE
+	U_Int.Value := In;
+	Buffer[Offset] := U_Int.AValue;
+	Set_Bool_Fom_Buffer := Buffer_Error.None;
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="Set_Bool_Fom_Buffer">
+      <LineId Id="13" Count="23" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="40" Count="0" />
       <LineId Id="7" Count="0" />
     </LineIds>
   </POU>

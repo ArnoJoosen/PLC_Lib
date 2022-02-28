@@ -3,14 +3,112 @@
   <POU Name="MAIN" Id="{ac7ccafc-0f66-4244-bca1-474ce436e2ea}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	fbGetCurTaskIdx  : GETCURTASKINDEX;
+	
 	Layout : Buffer_Layout;
+	Buffer : ARRAY[0..63] OF BYTE;
+	
+	// out var
+	VarEen : INT;
+	VarTwee : INT;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[fbGetCurTaskIdx();
+IF _TaskInfo[fbGetCurTaskIdx.index].FirstCycle THEN
+	;
+END_IF
+
+Set_Buffer_Layout(
+	Buffer_Size:= 64, 
+	Bool_Amount:= 0, 
+	Int_Amount:= 0, 
+	Real_Amount:= 0, 
+	String_Amount:= 2, 
+	Layout:= Layout);
+
+Set_Int_From_Buffer(
+	In:= 300, 
+	Num:= 0, 
+	Layout:= Layout, 
+	Buffer:= Buffer);
+	
+Set_Int_From_Buffer(
+	In:= 30, 
+	Num:= 1, 
+	Layout:= Layout, 
+	Buffer:= Buffer);
+	
+Set_Bool_Fom_Buffer(
+	In:= TRUE, 
+	Num:= 0, 
+	Layout:= Layout, 
+	Buffer:= Buffer);
+	
+	
+Set_Bool_Fom_Buffer(
+	In:= TRUE, 
+	Num:= 1, 
+	Layout:= Layout, 
+	Buffer:= Buffer);
+	
+	
+Set_Real_From_Buffer(
+	In:= 3.55, 
+	Num:= 0, 
+	Layout:= Layout, 
+	Buffer:= Buffer);
+	
+Set_Real_From_Buffer(
+	In:= 10.66, 
+	Num:= 1, 
+	Layout:= Layout, 
+	Buffer:= Buffer);
+	
+	
+Set_String_From_Buffer(
+	In:= 'AAAAA', 
+	Num:= 0, 
+	Layout:= Layout, 
+	Buffer:= Buffer);
+	
+Set_String_From_Buffer(
+	In:= 'AAAAAAAA', 
+	Num:= 1, 
+	Layout:= Layout, 
+	Buffer:= Buffer);]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="5" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="143" Count="0" />
+      <LineId Id="145" Count="5" />
+      <LineId Id="144" Count="0" />
+      <LineId Id="49" Count="4" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="77" Count="3" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="98" Count="0" />
+      <LineId Id="100" Count="3" />
+      <LineId Id="99" Count="0" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="106" Count="4" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="111" Count="1" />
+      <LineId Id="114" Count="3" />
+      <LineId Id="113" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="120" Count="3" />
+      <LineId Id="119" Count="0" />
+      <LineId Id="124" Count="1" />
+      <LineId Id="127" Count="3" />
+      <LineId Id="126" Count="0" />
+      <LineId Id="131" Count="0" />
+      <LineId Id="133" Count="3" />
+      <LineId Id="132" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
