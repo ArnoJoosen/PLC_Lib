@@ -20,49 +20,31 @@
     <Compile Include="DUTs\Buffer_Layout.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\Buffer_Layout_Error.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DUTs\Layout_Array_Types.TcDUT">
+    <Compile Include="DUTs\Buffer_Error.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Buffer_Layout_Configer\Chek_Buffer_Layout.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\Buffer_Layout_Configer\Get_Layout_Size.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Buffer_Layout_Configer\Overlap_Chek.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Buffer_Layout_Configer\Set_Buffer_Layout_Array.TcPOU">
+    <Compile Include="POUs\Buffer_Layout_Configer\Set_Buffer_Layout.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Read_Buffer\DInt_From_ByteArray.TcPOU">
+    <Compile Include="POUs\Read_Buffer\Bool_From_Buffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Read_Buffer\Int_From_ByteArray.TcPOU">
+    <Compile Include="POUs\Read_Buffer\Int_From_Buffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Read_Buffer\LReal_From_ByteArray.TcPOU">
+    <Compile Include="POUs\Read_Buffer\Real_From_Buffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Read_Buffer\Real_From_ByteArray.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Read_Buffer\SInt_From_ByteArray.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Read_Buffer\UInt_From_ByteArray.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Read_Buffer\USInt_From_ByteArray.TcPOU">
+    <Compile Include="POUs\Read_Buffer\String_From_Buffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -70,6 +52,7 @@
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
     <Folder Include="POUs\Buffer_Layout_Configer" />
+    <Folder Include="POUs\Wread_Buffer" />
     <Folder Include="POUs\Read_Buffer" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />

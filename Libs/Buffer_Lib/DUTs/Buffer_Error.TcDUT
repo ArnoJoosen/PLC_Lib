@@ -8,7 +8,9 @@ TYPE Buffer_Error :
 	None := 0,
 	Overflow := 1,
 	Array_Not_Enabelt := 2,
-	Array_To_Small := 3
+	Array_To_Small := 3,
+	Layout_Not_Size_Buffer := 4,
+	Read_Error := 5
 ) UINT;
 END_TYPE
 ]]></Declaration>
