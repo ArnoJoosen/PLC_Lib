@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
-  <POU Name="Camera_Set_Ouput_Layout" Id="{f5de775a-8f45-4d98-a894-f355d5c529da}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION Camera_Set_Ouput_Layout : UINT
+  <POU Name="Camera_Init" Id="{a70b5ab6-a358-4ede-ad88-10f3494b78fb}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Camera_Init : BOOL
 VAR_INPUT
 	Camera : REFERENCE TO Cognex_Camera;
 END_VAR
@@ -9,9 +9,9 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[Camera.Acquistion.TriggerEnabel := TRUE;]]></ST>
     </Implementation>
-    <LineIds Name="Camera_Set_Ouput_Layout">
+    <LineIds Name="Camera_Init">
       <LineId Id="7" Count="0" />
     </LineIds>
   </POU>

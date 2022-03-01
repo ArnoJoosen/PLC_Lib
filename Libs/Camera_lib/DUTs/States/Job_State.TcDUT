@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="Job_State" Id="{40317652-6192-4315-8c1e-575dc7b2fda1}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE Job_State :
+(
+	TriggerAck := 0,
+	Wate := 0,
+	Complte := 0,
+	Error := 0
+) UINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

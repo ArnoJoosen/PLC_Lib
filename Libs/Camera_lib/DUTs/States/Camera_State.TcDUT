@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="Camera_State" Id="{1decb366-b993-4662-8e74-b7bca68a2f3a}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE Camera_State :
+(
+	Idel := 0,
+	Jope_Running := 1,
+	Command_Running := 2,
+	Error := 3
+) UINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

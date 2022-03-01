@@ -48,10 +48,28 @@
     <Compile Include="DUTs\CameraIO\S_User_Data.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\Camera_Error.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\Cognex_Camera.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\States\Camera_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\States\Command_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\States\Job_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Camera_Init.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Camera_Load_Job.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Camera_Set_Input_Layout.TcPOU">
@@ -63,6 +81,15 @@
     <Compile Include="POUs\Camera_Trigger.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Camera_Update.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SubFunctions\Update_Command_State.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SubFunctions\Update_Jobe_State.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Version\Global_Version.TcGVL">
       <SubType>Code</SubType>
     </Compile>
@@ -70,7 +97,9 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="DUTs\CameraIO" />
+    <Folder Include="DUTs\States" />
     <Folder Include="GVLs" />
+    <Folder Include="SubFunctions" />
     <Folder Include="Version" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />

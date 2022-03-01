@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Update_Command_State" Id="{37a8c9d7-ccce-4f74-b94a-86dc9c36ae06}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Update_Command_State : BOOL
+VAR_INPUT
+	Camera : REFERENCE TO Cognex_Camera;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF Camera.CommandState = Command_State.Wate THEN
+	IF Camera.Inspection.COmmandCompleted THEN
+		Camera.CommandState := Command_State.Complete;
+	ELSIF Camera.Inspection.CommandFailed THEN
+		Camera.CommandState := Command_State.Error;
+		Camera.CameraState := Camera_State.Error;
+		CASE Camera.Inspection.ErrorCode OF
+			16#0100: // Trigger set while disabeld
+				Camera.Error := Camera_Error.Trigger_Set_While_disabeld;
+			16#0101: // trigger set while offline
+				Camera.Error := Camera_Error.Trigger_Set_While_Offline;
+			16#0400: // already executing error
+				Camera.Error := Camera_Error.Already_Executing;
+			16#0401: // job load requeted while online
+				Camera.Error := Camera_Error.Job_Load_Requested_While_Online;
+			16#0402: // job load requested does not exist on the camera
+				Camera.Error := Camera_Error.Job_Does_Not_Exist;
+		END_CASE
+		RETURN;
+	END_IF
+ELSIF Camera.CommandState = Command_State.Error THEN
+	Camera.CommandState := Command_State.Error;
+	Camera.CameraState := Camera_State.Error;
+	CASE Camera.Inspection.ErrorCode OF
+		16#0100: // Trigger set while disabeld
+			Camera.Error := Camera_Error.Trigger_Set_While_disabeld;
+		16#0101: // trigger set while offline
+			Camera.Error := Camera_Error.Trigger_Set_While_Offline;
+		16#0400: // already executing error
+			Camera.Error := Camera_Error.Already_Executing;
+		16#0401: // job load requeted while online
+			Camera.Error := Camera_Error.Job_Load_Requested_While_Online;
+		16#0402: // job load requested does not exist on the camera
+			Camera.Error := Camera_Error.Job_Does_Not_Exist;
+	END_CASE
+	RETURN;
+ELSE
+	Camera.CommandState := Command_State.Error;
+	Camera.Error := Camera_Error.StateError;
+	RETURN;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Update_Command_State">
+      <LineId Id="7" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="13" Count="1" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="36" Count="10" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="24" Count="10" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="18" Count="1" />
+      <LineId Id="21" Count="1" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

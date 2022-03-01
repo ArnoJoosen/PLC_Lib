@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="Camera_Error" Id="{be25e2e2-e2c0-4534-8fa5-3eed09f816ab}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE Camera_Error :
+(
+	None := 0,
+	StateError := 1,
+	Trigger_Set_While_disabeld := 2,
+	Trigger_Set_While_Offline := 3,
+	Already_Executing := 4,
+	Job_Load_Requested_While_Online := 5,
+	Job_Does_Not_Exist := 6
+) UINT;
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

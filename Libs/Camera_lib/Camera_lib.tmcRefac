@@ -16,5 +16,30 @@
       <From>Camera_Set_Layout</From>
       <To>Camera_Set_Input_Layout</To>
     </RenamedType>
+    <RenamedType>
+      <Type guid="aac0a895-fc07-40b3-9211-4fea18b9fe15">COMMANDSTATE</Type>
+      <From>CommandState</From>
+      <To>Command_State</To>
+    </RenamedType>
+    <RenamedType>
+      <Type guid="40317652-6192-4315-8c1e-575dc7b2fda1">JOBSTATE</Type>
+      <From>JopeState</From>
+      <To>Job_State</To>
+    </RenamedType>
+    <RenamedType>
+      <Type guid="1decb366-b993-4662-8e74-b7bca68a2f3a">CAMERASTATE</Type>
+      <From>CameraState</From>
+      <To>Camera_State</To>
+    </RenamedType>
+    <RenamedType>
+      <Type guid="be25e2e2-e2c0-4534-8fa5-3eed09f816ab">CAMERA_ERRORS</Type>
+      <From>Camera_Errors</From>
+      <To>Camera_Error</To>
+    </RenamedType>
+    <RenamedType>
+      <Type guid="85bb63c0-efb5-40a9-b294-e539bdfb8a90">UPDATE</Type>
+      <From>Update</From>
+      <To>Camera_Update</To>
+    </RenamedType>
   </Renames>
 </Refactors>

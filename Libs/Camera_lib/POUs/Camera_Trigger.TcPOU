@@ -1,18 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
   <POU Name="Camera_Trigger" Id="{ad000b63-df7b-425c-bc71-b905122b4615}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION Camera_Trigger : UINT
+    <Declaration><![CDATA[FUNCTION Camera_Trigger : BOOL
 VAR_INPUT
+	Camera : REFERENCE TO Cognex_Camera;
 END_VAR
 
 VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF Camera.CameraState = Camera_State.Error THEN
+	Camera.Acquistion.ClearExposure := TRUE;
+	Camera.Acquistion.Trigger := TRUE;
+	Camera.CameraState := Camera_State.Jope_Running;
+	Camera.JobeState := Job_State.TriggerAck;
+ELSE
+	Camera_Trigger := FALSE;
+	RETURN;
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="Camera_Trigger">
       <LineId Id="7" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="21" Count="2" />
+      <LineId Id="17" Count="2" />
+      <LineId Id="16" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

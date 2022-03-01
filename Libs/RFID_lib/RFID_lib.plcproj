@@ -48,6 +48,9 @@
     <Compile Include="POUs\RFID_Sensor_Detect.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\RFID_Sensor_Read.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Version\Global_Version.TcGVL">
       <SubType>Code</SubType>
     </Compile>

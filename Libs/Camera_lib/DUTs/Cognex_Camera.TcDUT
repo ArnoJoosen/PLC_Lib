@@ -11,8 +11,12 @@ STRUCT
 	User_Data : S_User_Data;
 	
 	// local var
-	Input_Buffer_Layout : Buffer_Layout;
-	Ouput_Buffer_Layout : Buffer_Layout;
+	//Input_Buffer_Layout : Buffer_Layout;
+	//Ouput_Buffer_Layout : Buffer_Layout;
+	CameraState : Camera_State := Camera_State.Idel;
+	JobeState : Job_State;
+	CommandState : Command_State;
+	Error : Camera_Error := Camera_Error.None;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Camera_Update" Id="{85bb63c0-efb5-40a9-b294-e539bdfb8a90}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Camera_Update : BOOL
+VAR_INPUT
+	Camera : REFERENCE TO Cognex_Camera;
+END_VAR
+VAR
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF Camera.CameraState = Camera_State.Idel THEN
+	RETURN;
+ELSIF Camera.CameraState = Camera_State.Jope_Running THEN
+	Update_Jobe_State(Camera);
+ELSIF Camera.CameraState = Camera_State.Command_Running THEN
+	Update_Jobe_State(Camera);
+ELSE
+	;
+	// TODO Set Camera error to state error
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Camera_Update">
+      <LineId Id="7" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="18" Count="5" />
+      <LineId Id="15" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

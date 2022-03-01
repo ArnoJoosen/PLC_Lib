@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="Command_State" Id="{aac0a895-fc07-40b3-9211-4fea18b9fe15}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE Command_State :
+(
+	Exekute := 0,
+	Wate := 1,
+	Complete := 2,
+	Error := 3
+) UINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

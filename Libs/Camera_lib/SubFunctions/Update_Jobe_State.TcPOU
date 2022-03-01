@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Update_Jobe_State" Id="{1b98cabf-e7a1-488d-8010-b77c8a056498}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Update_Jobe_State : BOOL
+VAR_INPUT
+	Camera : REFERENCE TO Cognex_Camera;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF NOT Camera.CameraState = Camera_State.Jope_Running THEN
+	RETURN;
+END_IF
+
+IF Camera.JobeState = Job_State.TriggerAck THEN
+	IF Camera.Acquistion.TriggerAck THEN
+		Camera.JobeState := Job_State.Wate;
+		Camera.Acquistion.ClearExposure := FALSE;
+		Camera.Acquistion.Trigger := FALSE;
+		RETURN;
+	ELSE
+		RETURN;
+	END_IF
+ELSIF Camera.JobeState = Job_State.Wate THEN
+	IF Camera.Inspection.InspectionCompleted AND (NOT Camera.Inspection.SystemBusy) THEN
+		Camera.JobeState := Job_State.Complte;
+	END_IF
+	
+ELSIF Camera.Inspection.Error THEN
+	Camera.JobeState := Job_State.Error;
+	Camera.CameraState := Camera_State.Error;
+	CASE Camera.Inspection.ErrorCode OF
+		16#0100: // Trigger set while disabeld
+			Camera.Error := Camera_Error.Trigger_Set_While_disabeld;
+		16#0101: // trigger set while offline
+			Camera.Error := Camera_Error.Trigger_Set_While_Offline;
+		16#0400: // already executing error
+			Camera.Error := Camera_Error.Already_Executing;
+		16#0401: // job load requeted while online
+			Camera.Error := Camera_Error.Job_Load_Requested_While_Online;
+		16#0402: // job load requested does not exist on the camera
+			Camera.Error := Camera_Error.Job_Does_Not_Exist;
+	END_CASE
+ELSIF Camera.JobeState = Job_State.Error THEN
+	RETURN;
+ELSE
+	Camera.JobeState := Job_State.Error;
+	Camera.Error := Camera_Error.StateError;
+	RETURN;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Update_Jobe_State">
+      <LineId Id="7" Count="0" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="70" Count="1" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="27" Count="1" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="31" Count="1" />
+      <LineId Id="34" Count="1" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="58" Count="10" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="43" Count="1" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="15" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
