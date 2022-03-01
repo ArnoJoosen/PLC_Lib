@@ -1,38 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
-  <DUT Name="RFID_Sensor" Id="{2702e5cd-d065-40b5-9665-1f5c950c637c}">
+  <DUT Name="RFID_Sensor" Id="{83c4e0e6-f2e6-4ad7-84c8-bc580bca66b8}">
     <Declaration><![CDATA[TYPE RFID_Sensor :
 STRUCT
-	// IO
-	// input
-	IN_Response_Code AT %I* : UINT;
-	IN_Loop_ounter AT %I* : USINT;
-	IN_Tag_Presant_At_R_W_Head AT %I* : BOOL;
-	IN_Antenna_Detuned_AT_HF_Read_Write_Head AT %I* : BOOL;
-	IN_Parameter_Not_Supported_By_Read_Write_Head AT %I* : BOOL;
-	IN_Error_Reported_By_Read_Write_Head AT %I* : BOOL;
-	IN_Not_Connected_To_Read_Write_Head AT %I* : BOOL;
-	IN_HF_R_W_Head_Switch_on AT %I* : BOOL;
-	IN_Continuous_Mode_active AT %I* : BOOL;
-	IN_Length AT %I* : UINT;
-	IN_Error_Code AT %I* : UINT;
-	IN_Tag_Counter AT %I* : UINT;
-	
-	// output
-	OUT_Command_Code AT %Q* : UINT;
-	OUT_Loop_Counter AT %Q* : USINT;
-	OUT_Start_address AT %Q* : UDINT;
-	OUT_Length AT %Q* : UINT;
-	OUT_Length_OF_UID_EPC AT %Q* : USINT;
-	
-	// buffers
-	RD AT %I* : ARRAY[0..127] OF USINT; // input buffer
-	WD AT %Q* : ARRAY[0..127] OF USINT; // output buffer
-	
-	// etercat state
-	IN_State AT %Q* : UINT;
-	
-	// Local Var
+	Input AT %I* : CompactInput_t;
+	Ouput AT %Q* : CompactOutput_t;
+	Input_Buffer AT %I* : ARRAY[0..127] OF BYTE;
+	Output_Buffer AT %Q* : ARRAY[0..127] OF BYTE;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

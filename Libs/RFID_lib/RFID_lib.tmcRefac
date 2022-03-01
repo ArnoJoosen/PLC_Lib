@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Refactors>
+  <Renames>
+    <RenamedType>
+      <Type guid="eeeac8b5-fdc9-4396-8f23-d16d4757bda2">TAG_UUID</Type>
+      <From>Tag_ID</From>
+      <To>Tag_UID</To>
+    </RenamedType>
+  </Renames>
+</Refactors>

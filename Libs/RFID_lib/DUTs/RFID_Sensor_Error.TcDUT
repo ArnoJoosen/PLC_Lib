@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="RFID_Sensor_Error" Id="{1de2253f-3b50-4935-af52-71e4af814a2b}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE RFID_Sensor_Error :
+(
+	None := 0,
+	Not_Connected := 1,
+	Antenna_Detuned := 2,
+	Wrong_Mode := 4
+) UINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

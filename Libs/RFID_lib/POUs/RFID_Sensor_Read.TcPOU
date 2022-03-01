@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="RFID_Sensor_Read" Id="{c3ae08fd-2472-4db9-a318-2e9d26a190f8}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION RFID_Sensor_Read : RFID_Sensor_Error
+VAR_INPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="RFID_Sensor_Read">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

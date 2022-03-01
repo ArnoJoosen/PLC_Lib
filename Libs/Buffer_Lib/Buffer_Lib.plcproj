@@ -15,6 +15,22 @@
     <Implicit_KindOfTask>{aae9132b-4bfa-4f43-9088-75f742dbab54}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{5861f891-7ba6-4a1e-991a-5de609512893}</Implicit_Jitter_Distribution>
     <LibraryReferences>{db05e458-fa73-46d4-b0f3-35d0c0ff2110}</LibraryReferences>
+    <Company>Thomas More</Company>
+    <Released>false</Released>
+    <Title>Buffer Lib</Title>
+    <ProjectVersion>1.0.0</ProjectVersion>
+    <LibraryCategories>
+      <LibraryCategory xmlns="">
+        <Id>{c0f0b351-59c4-4605-bee8-aff2cb010a06}</Id>
+        <Version>1.0.0.0</Version>
+        <DefaultName>ArnoLib</DefaultName>
+      </LibraryCategory>
+    </LibraryCategories>
+    <SelectedLibraryCategories>
+      <Id xmlns="">{c0f0b351-59c4-4605-bee8-aff2cb010a06}</Id>
+    </SelectedLibraryCategories>
+    <DefaultNamespace>Buffer</DefaultNamespace>
+    <Author>Arno Joosen</Author>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DUTs\Bool_ByteArray.TcDUT">
@@ -71,6 +87,9 @@
     <Compile Include="POUs\Wread_Buffer\Set_String_From_Buffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Version\Global_Version.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
@@ -78,6 +97,7 @@
     <Folder Include="POUs\Buffer_Layout_Configer" />
     <Folder Include="POUs\Wread_Buffer" />
     <Folder Include="POUs\Read_Buffer" />
+    <Folder Include="Version" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

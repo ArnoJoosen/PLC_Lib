@@ -33,25 +33,19 @@
     <Author>Arno Joosen</Author>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DUTs\EterCAT_State.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="DUTs\RFID_Sensor.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\RFID_Sensor_Errors.TcDUT">
+    <Compile Include="DUTs\RFID_Sensor_Error.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\Tag_ID.TcDUT">
+    <Compile Include="DUTs\Tag_UID.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\ID_equal_to_ID.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\RFID_Sensor_Detect.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\RFID_Sensor_Read_Tag.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Version\Global_Version.TcGVL">
@@ -66,6 +60,10 @@
     <Folder Include="POUs" />
   </ItemGroup>
   <ItemGroup>
+    <PlaceholderReference Include="RFID FB U">
+      <DefaultResolution>RFID universal data interface TwinCAT, * (Turck)</DefaultResolution>
+      <Namespace>RFID_FB_U</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="Tc2_Standard">
       <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_Standard</Namespace>

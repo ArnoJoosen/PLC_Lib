@@ -3,8 +3,8 @@
   <POU Name="ID_equal_to_ID" Id="{eb2f5e9c-4573-433a-8055-6463937ca6ab}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION ID_equal_to_ID : BOOL
 VAR_INPUT
-	ID1 :  REFERENCE TO Tag_ID;
-	ID2 :  REFERENCE TO Tag_ID;
+	ID1 :  REFERENCE TO Tag_UID;
+	ID2 :  REFERENCE TO Tag_UID;
 END_VAR
 
 VAR CONSTANT 
