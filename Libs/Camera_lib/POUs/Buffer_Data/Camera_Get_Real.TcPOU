@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Camera_Get_Real" Id="{7d903318-7484-4b20-bdcf-383edded3579}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Camera_Get_Real : Buffer_Error
+VAR_INPUT
+	Camera : REFERENCE TO Cognex_Camera;
+	Num : USINT;
+END_VAR
+
+VAR_IN_OUT
+	Out : REAL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Camera_Get_Real := Get_Real_From_Buffer(Num:= Num, 
+										Layout:= Camera.Input_Buffer_Layout, 
+										Buffer:= Camera.User_Data.Data, 
+										Out:= Out);]]></ST>
+    </Implementation>
+    <LineIds Name="Camera_Get_Real">
+      <LineId Id="15" Count="0" />
+      <LineId Id="17" Count="1" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

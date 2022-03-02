@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
   <POU Name="Get_String_From_Buffer" Id="{cf938f01-a79f-43ce-b306-61e357148e05}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION Get_String_From_Buffer : BOOL
+    <Declaration><![CDATA[FUNCTION Get_String_From_Buffer : Buffer_Error
 VAR_INPUT
 	Num : USINT;
 	Layout : REFERENCE TO Buffer_Layout;

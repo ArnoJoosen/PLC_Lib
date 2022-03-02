@@ -41,5 +41,10 @@
       <From>Update</From>
       <To>Camera_Update</To>
     </RenamedType>
+    <RenamedType>
+      <Type guid="75aa2265-2123-4a51-81ea-dbc481510090">JOBENAME</Type>
+      <From>JobeName</From>
+      <To>Jobe_Name</To>
+    </RenamedType>
   </Renames>
 </Refactors>

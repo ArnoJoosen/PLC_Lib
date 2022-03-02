@@ -54,6 +54,9 @@
     <Compile Include="DUTs\Cognex_Camera.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\Jobe_Name.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\States\Camera_State.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -64,6 +67,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Buffer_Data\Camera_Get_Bool.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Buffer_Data\Camera_Get_Int.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Buffer_Data\Camera_Get_Real.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Buffer_Data\Camera_Get_String.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Camera_Init.TcPOU">
@@ -99,12 +114,17 @@
     <Folder Include="DUTs\CameraIO" />
     <Folder Include="DUTs\States" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\Buffer_Data" />
     <Folder Include="SubFunctions" />
     <Folder Include="Version" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
   <ItemGroup>
+    <PlaceholderReference Include="Buffer Lib">
+      <DefaultResolution>Buffer Lib, * (Thomas More)</DefaultResolution>
+      <Namespace>Buffer</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="Tc2_Standard">
       <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_Standard</Namespace>

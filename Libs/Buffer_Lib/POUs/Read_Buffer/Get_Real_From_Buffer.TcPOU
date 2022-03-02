@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
   <POU Name="Get_Real_From_Buffer" Id="{ec1a2110-8ce0-4579-be76-7cbfd0d9f36b}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION Get_Real_From_Buffer : REAL
+    <Declaration><![CDATA[FUNCTION Get_Real_From_Buffer : Buffer_Error
 VAR_INPUT
 	Num : USINT;
 	Layout : REFERENCE TO Buffer_Layout;

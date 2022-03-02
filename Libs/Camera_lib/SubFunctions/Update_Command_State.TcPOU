@@ -12,9 +12,11 @@ END_VAR
       <ST><![CDATA[IF Camera.CommandState = Command_State.Wate THEN
 	IF Camera.Inspection.COmmandCompleted THEN
 		Camera.CommandState := Command_State.Complete;
+		Camera.Inspection.ExecuteCommand := FALSE;
 	ELSIF Camera.Inspection.CommandFailed THEN
 		Camera.CommandState := Command_State.Error;
 		Camera.CameraState := Camera_State.Error;
+		Camera.Inspection.ExecuteCommand := FALSE;
 		CASE Camera.Inspection.ErrorCode OF
 			16#0100: // Trigger set while disabeld
 				Camera.Error := Camera_Error.Trigger_Set_While_disabeld;
@@ -55,8 +57,10 @@ END_IF]]></ST>
       <LineId Id="7" Count="0" />
       <LineId Id="9" Count="0" />
       <LineId Id="11" Count="0" />
+      <LineId Id="55" Count="0" />
       <LineId Id="13" Count="1" />
       <LineId Id="47" Count="0" />
+      <LineId Id="56" Count="0" />
       <LineId Id="36" Count="10" />
       <LineId Id="17" Count="0" />
       <LineId Id="16" Count="0" />

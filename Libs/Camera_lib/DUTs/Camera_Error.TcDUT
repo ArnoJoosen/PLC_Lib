@@ -11,7 +11,8 @@ TYPE Camera_Error :
 	Trigger_Set_While_Offline := 3,
 	Already_Executing := 4,
 	Job_Load_Requested_While_Online := 5,
-	Job_Does_Not_Exist := 6
+	Job_Does_Not_Exist := 6,
+	Time_Out := 7
 ) UINT;
 END_TYPE]]></Declaration>
   </DUT>

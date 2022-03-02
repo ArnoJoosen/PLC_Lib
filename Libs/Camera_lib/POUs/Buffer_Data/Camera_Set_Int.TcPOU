@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Camera_Set_Int" Id="{127b00c9-8357-4eae-abf6-0d3b388870df}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Camera_Set_Int : Buffer_Error
+VAR_INPUT
+	Camera : REFERENCE TO Cognex_Camera;
+	Num : USINT;
+	In : INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Camera_Set_Int := Set_Int_From_Buffer(	In:= In, 
+										Num:= Num, 
+										Layout:= Camera.Ouput_Buffer_Layout, 
+										Buffer:= Camera.User_Data.UserData);]]></ST>
+    </Implementation>
+    <LineIds Name="Camera_Set_Int">
+      <LineId Id="11" Count="0" />
+      <LineId Id="13" Count="1" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

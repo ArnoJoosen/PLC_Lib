@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Camera_Get_Bool" Id="{f65c6b45-978e-45d6-9564-5a68e1ee1557}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Camera_Get_Bool : Buffer_Error
+VAR_INPUT
+	Camera : REFERENCE TO Cognex_Camera;
+	Num : USINT;
+END_VAR
+
+VAR_IN_OUT
+	Out : BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Camera_Get_Bool := Get_Bool_From_Buffer(Num:= Num, 
+										Layout:= Camera.Ouput_Buffer_Layout, 
+										Buffer:= Camera.User_Data.Data, 
+										Out:= Out);]]></ST>
+    </Implementation>
+    <LineIds Name="Camera_Get_Bool">
+      <LineId Id="15" Count="0" />
+      <LineId Id="17" Count="1" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="Jobe_Name" Id="{3c053899-87ab-4ee0-983d-6528e0961052}">
+    <Declaration><![CDATA[TYPE Jobe_Name :
+UNION
+	StrVal : STRING[63];
+	ArayVal : ARRAY[0..63] OF BYTE;
+END_UNION
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

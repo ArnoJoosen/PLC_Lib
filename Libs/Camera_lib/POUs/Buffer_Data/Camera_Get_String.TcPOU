@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Camera_Get_String" Id="{4fa848ff-0cc7-4e4d-8fff-fbaddc7844aa}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Camera_Get_String : Buffer_Error
+VAR_INPUT
+	Camera : REFERENCE TO Cognex_Camera;
+	Num : USINT;
+END_VAR
+VAR_IN_OUT
+	Out : STRING[8];
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Camera_Get_String := Get_String_From_Buffer(Num:= Num, 
+											Layout:= Camera.Input_Buffer_Layout, 
+											Buffer:= Camera.User_Data.Data, 
+											Out:= Out)]]></ST>
+    </Implementation>
+    <LineIds Name="Camera_Get_String">
+      <LineId Id="15" Count="0" />
+      <LineId Id="17" Count="1" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

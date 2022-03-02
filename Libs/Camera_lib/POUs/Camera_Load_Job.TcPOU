@@ -3,15 +3,54 @@
   <POU Name="Camera_Load_Job" Id="{548e7354-7c81-4e98-a425-bdafd56ffdd3}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION Camera_Load_Job : BOOL
 VAR_INPUT
-	JobeBame : STRING[63];
+	Camera : REFERENCE TO Cognex_Camera;
+	JobeName : STRING[63]; // 0..63 met 0 terminator
 END_VAR
 VAR
+	i : UINT;
+	UJobeName : Jobe_Name;
+	End : BOOL := FALSE;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF Camera.CameraState = Camera_State.Idel THEN
+	// set camera in offline mode
+	Camera.Acquistion.SetOffline := TRUE;
+	// set command to load job by name
+	Camera.Command_Control.Command := 16#4000;
+	// load name in input user buffer
+	UJobeName.StrVal := JobeName;
+	FOR i:=0 TO 63 BY 1 DO
+		IF UJobeName.StrVal[i] = 0 AND End THEN
+			Camera.User_Data[i] := 16#0; // set End
+			End := TRUE;
+		ELSE
+			Camera.User_Data[i] := UJobeName.StrVal[i];
+		END_IF
+	END_FOR
+	// set execute
+	Camera.Inspection.ExecuteCommand := TRUE;
+	Camera_Load_Job := TRUE;
+ELSE
+	Camera_Load_Job := FALSE;
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="Camera_Load_Job">
       <LineId Id="7" Count="0" />
+      <LineId Id="18" Count="1" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="20" Count="1" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="32" Count="1" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="38" Count="1" />
+      <LineId Id="16" Count="1" />
+      <LineId Id="15" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
