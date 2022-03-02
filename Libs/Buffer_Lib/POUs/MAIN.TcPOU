@@ -14,11 +14,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbGetCurTaskIdx();
-IF _TaskInfo[fbGetCurTaskIdx.index].FirstCycle THEN
-	;
-END_IF
-
+      <ST><![CDATA[
 Set_Buffer_Layout(
 	Buffer_Size:= 64, 
 	Bool_Amount:= 0, 
@@ -80,10 +76,6 @@ Set_String_From_Buffer(
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="30" Count="0" />
-      <LineId Id="9" Count="0" />
-      <LineId Id="32" Count="0" />
-      <LineId Id="48" Count="0" />
-      <LineId Id="143" Count="0" />
       <LineId Id="145" Count="5" />
       <LineId Id="144" Count="0" />
       <LineId Id="49" Count="4" />

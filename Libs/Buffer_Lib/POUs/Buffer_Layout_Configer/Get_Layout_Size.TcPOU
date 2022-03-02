@@ -29,6 +29,7 @@ IF Layout.Enabel_String_Array THEN
 	Current_Buffer_Size := Current_Buffer_Size + (Layout.String_Amount * 8);
 END_IF;
 
+// return values
 Get_Layout_Size := Current_Buffer_Size;]]></ST>
     </Implementation>
     <LineIds Name="Get_Layout_Size">
@@ -38,6 +39,7 @@ Get_Layout_Size := Current_Buffer_Size;]]></ST>
       <LineId Id="38" Count="5" />
       <LineId Id="46" Count="0" />
       <LineId Id="7" Count="0" />
+      <LineId Id="68" Count="0" />
       <LineId Id="50" Count="0" />
       <LineId Id="49" Count="0" />
     </LineIds>

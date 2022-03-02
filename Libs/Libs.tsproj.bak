@@ -21,7 +21,7 @@
 			</Tasks>
 		</System>
 		<Plc>
-			<Project GUID="{FF429566-39CC-45BA-B407-E3699E60242F}" Name="RFID_lib" PrjFilePath="RFID_lib\RFID_lib.plcproj" TmcFilePath="RFID_lib\RFID_lib.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+			<Project Disabled="true" GUID="{FF429566-39CC-45BA-B407-E3699E60242F}" Name="RFID_lib" PrjFilePath="RFID_lib\RFID_lib.plcproj" TmcFilePath="RFID_lib\RFID_lib.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
 				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="RFID_lib\RFID_lib.tmc">
 					<Name>RFID_lib Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
@@ -33,7 +33,7 @@
 					</Contexts>
 				</Instance>
 			</Project>
-			<Project Disabled="true" GUID="{CD0BD1B0-B0E0-44C4-91C5-335522A0D47B}" Name="Camera_lib" PrjFilePath="Camera_lib\Camera_lib.plcproj" TmcFilePath="Camera_lib\Camera_lib.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e" SymbolicMapping="true">
+			<Project GUID="{CD0BD1B0-B0E0-44C4-91C5-335522A0D47B}" Name="Camera_lib" PrjFilePath="Camera_lib\Camera_lib.plcproj" TmcFilePath="Camera_lib\Camera_lib.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e" SymbolicMapping="true">
 				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Camera_lib\Camera_lib.tmc">
 					<Name>Camera_lib Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>

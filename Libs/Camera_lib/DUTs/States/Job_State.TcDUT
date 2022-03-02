@@ -6,9 +6,9 @@
 TYPE Job_State :
 (
 	TriggerAck := 0,
-	Wate := 0,
-	Complte := 0,
-	Error := 0
+	Wate := 1,
+	Complte := 2,
+	Error := 3
 ) UINT;
 END_TYPE
 ]]></Declaration>

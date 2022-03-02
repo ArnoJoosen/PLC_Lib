@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
   <POU Name="Camera_Update" Id="{85bb63c0-efb5-40a9-b294-e539bdfb8a90}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION Camera_Update : BOOL
+    <Declaration><![CDATA[FUNCTION Camera_Update : Camera_Error
 VAR_IN_OUT
 	Camera : Cognex_Camera;
 END_VAR]]></Declaration>
@@ -16,8 +16,7 @@ ELSIF Camera.CameraState = Camera_State.Clear_Error THEN
 	Camera.Inspection.Clear_Error := FALSE;
 	Camera.CameraState := Camera_State.Idel;
 ELSE
-	;
-	// TODO Set Camera error to state error
+	Camera_Update := Camera.Error;
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="Camera_Update">
@@ -26,7 +25,7 @@ END_IF]]></ST>
       <LineId Id="16" Count="0" />
       <LineId Id="18" Count="2" />
       <LineId Id="31" Count="2" />
-      <LineId Id="21" Count="2" />
+      <LineId Id="21" Count="1" />
       <LineId Id="15" Count="0" />
     </LineIds>
   </POU>

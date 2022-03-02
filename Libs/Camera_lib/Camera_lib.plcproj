@@ -81,6 +81,18 @@
     <Compile Include="POUs\Buffer_Data\Camera_Get_String.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Buffer_Data\Camera_Set_Bool.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Buffer_Data\Camera_Set_Int.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Buffer_Data\Camera_Set_Real.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Camera_ClearErrors.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Camera_Init.TcPOU">
       <SubType>Code</SubType>
     </Compile>
