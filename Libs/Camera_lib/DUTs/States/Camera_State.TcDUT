@@ -8,7 +8,8 @@ TYPE Camera_State :
 	Idel := 0,
 	Jope_Running := 1,
 	Command_Running := 2,
-	Error := 3
+	Error := 3,
+	Clear_Error := 4
 ) UINT;
 END_TYPE
 ]]></Declaration>

@@ -3,8 +3,10 @@
   <POU Name="Camera_Load_Job" Id="{548e7354-7c81-4e98-a425-bdafd56ffdd3}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION Camera_Load_Job : BOOL
 VAR_INPUT
-	Camera : REFERENCE TO Cognex_Camera;
 	JobeName : STRING[63]; // 0..63 met 0 terminator
+END_VAR
+VAR_IN_OUT
+	Camera : Cognex_Camera;
 END_VAR
 VAR
 	i : UINT;

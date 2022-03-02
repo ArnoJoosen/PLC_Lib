@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Camera_ClearErrors" Id="{6eb76ee5-3bfd-48d4-b377-858ecb0f5bbc}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Camera_ClearErrors : BOOL
+VAR_IN_OUT
+	Camera : Cognex_Camera;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF Camera.CameraState := Camera_State.Error THEN
+	Camera.Inspection.Clear_Error := TRUE;
+	Camera.CameraState := Camera_State.Clear_Error;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Camera_ClearErrors">
+      <LineId Id="8" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="17" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

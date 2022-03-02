@@ -2,11 +2,8 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
   <POU Name="Camera_Trigger" Id="{ad000b63-df7b-425c-bc71-b905122b4615}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION Camera_Trigger : BOOL
-VAR_INPUT
-	Camera : REFERENCE TO Cognex_Camera;
-END_VAR
-
-VAR
+VAR_IN_OUT
+	Camera : Cognex_Camera;
 END_VAR
 ]]></Declaration>
     <Implementation>

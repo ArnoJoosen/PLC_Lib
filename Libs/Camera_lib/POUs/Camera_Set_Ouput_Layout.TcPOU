@@ -3,13 +3,13 @@
   <POU Name="Camera_Set_Ouput_Layout" Id="{f5de775a-8f45-4d98-a894-f355d5c529da}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION Camera_Set_Ouput_Layout : UINT
 VAR_INPUT
-	Camera : REFERENCE TO Cognex_Camera;
+	Layout : Buffer_Layout;
 END_VAR
-VAR
-END_VAR
-]]></Declaration>
+VAR_IN_OUT
+	Camera : Cognex_Camera;
+END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[Camera.Ouput_Buffer_Layout := Layout;]]></ST>
     </Implementation>
     <LineIds Name="Camera_Set_Ouput_Layout">
       <LineId Id="7" Count="0" />

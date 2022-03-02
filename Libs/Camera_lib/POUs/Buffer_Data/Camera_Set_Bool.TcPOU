@@ -3,9 +3,12 @@
   <POU Name="Camera_Set_Bool" Id="{bf8a1094-fd99-4174-a00c-8e948d92e357}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION Camera_Set_Bool : Buffer_Error
 VAR_INPUT
-	Camera : REFERENCE TO Cognex_Camera;
 	Num : USINT;
 	In : BOOL;
+END_VAR
+
+VAR_IN_OUT
+	Camera : Cognex_Camera;
 END_VAR
 ]]></Declaration>
     <Implementation>

@@ -3,11 +3,13 @@
   <POU Name="Camera_Set_Real" Id="{92f652a1-f3d9-4f41-b78f-e3e3c96debd4}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION Camera_Set_Real : Buffer_Error
 VAR_INPUT
-	Camera : REFERENCE TO Cognex_Camera;
 	Num : USINT;
 	In : REAL;
 END_VAR
-]]></Declaration>
+
+VAR_IN_OUT
+	Camera : Cognex_Camera;
+END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[Camera_Set_Real := Set_Real_From_Buffer(In:= In, 
 										Num:= Num, 
