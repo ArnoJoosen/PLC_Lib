@@ -10,14 +10,14 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF Camera.CommandState = Command_State.Wate THEN
-	IF Camera.Inspection.COmmandCompleted THEN
+	IF Camera.InspectionStatusRegister.Command_Complete THEN
 		Camera.CommandState := Command_State.Complete;
-		Camera.Inspection.ExecuteCommand := FALSE;
-	ELSIF Camera.Inspection.CommandFailed THEN
+		Camera.InspectionControlRegister.Execute_Command := FALSE;
+	ELSIF Camera.InspectionStatusRegister.Command_Failed THEN
 		Camera.CommandState := Command_State.Error;
 		Camera.CameraState := Camera_State.Error;
-		Camera.Inspection.ExecuteCommand := FALSE;
-		CASE Camera.Inspection.ErrorCode OF
+		Camera.InspectionControlRegister.Execute_Command := FALSE;
+		CASE Camera.ErrorCode OF
 			16#0100: // Trigger set while disabeld
 				Camera.Error := Camera_Error.Trigger_Set_While_disabeld;
 			16#0101: // trigger set while offline
@@ -34,7 +34,7 @@ END_VAR
 ELSIF Camera.CommandState = Command_State.Error THEN
 	Camera.CommandState := Command_State.Error;
 	Camera.CameraState := Camera_State.Error;
-	CASE Camera.Inspection.ErrorCode OF
+	CASE Camera.ErrorCode OF
 		16#0100: // Trigger set while disabeld
 			Camera.Error := Camera_Error.Trigger_Set_While_disabeld;
 		16#0101: // trigger set while offline

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="SoftEvent" Id="{36379388-3383-46e7-9ee5-9a9443add131}">
+    <Declaration><![CDATA[TYPE SoftEvent :
+STRUCT
+	Soft_Event_0 : BIT;
+	Soft_Event_1 : BIT;
+	Soft_Event_2 : BIT;
+	Soft_Event_3 : BIT;
+	Soft_Event_4 : BIT;
+	Soft_Event_5 : BIT;
+	Soft_Event_6 : BIT;
+	Soft_Event_7 : BIT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

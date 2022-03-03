@@ -14,23 +14,23 @@ END_VAR
 END_IF
 
 IF Camera.JobeState = Job_State.TriggerAck THEN
-	IF Camera.Acquistion.TriggerAck THEN
+	IF Camera.AcquisitionStatusRegister.Acquistion_Trigger_Acknowledge THEN
 		Camera.JobeState := Job_State.Wate;
-		Camera.Acquistion.ClearExposure := FALSE;
-		Camera.Acquistion.Trigger := FALSE;
+		Camera.AcquisitionControl.Clear_Exposure_Complete := FALSE;
+		Camera.AcquisitionControl.Acquistion_Trigger := FALSE;
 		RETURN;
 	ELSE
 		RETURN;
 	END_IF
 ELSIF Camera.JobeState = Job_State.Wate THEN
-	IF Camera.Inspection.InspectionCompleted AND (NOT Camera.Inspection.SystemBusy) THEN
+	IF Camera.InspectionStatusRegister.Inspection_Completed AND (NOT Camera.InspectionStatusRegister.System_Busy) THEN
 		Camera.JobeState := Job_State.Complte;
 	END_IF
 	
-ELSIF Camera.Inspection.Error THEN
+ELSIF Camera.InspectionStatusRegister.Error THEN
 	Camera.JobeState := Job_State.Error;
 	Camera.CameraState := Camera_State.Error;
-	CASE Camera.Inspection.ErrorCode OF
+	CASE Camera.ErrorCode OF
 		16#0100: // Trigger set while disabeld
 			Camera.Error := Camera_Error.Trigger_Set_While_disabeld;
 		16#0101: // trigger set while offline

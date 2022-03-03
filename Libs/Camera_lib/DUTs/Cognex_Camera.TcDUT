@@ -4,11 +4,20 @@
     <Declaration><![CDATA[TYPE Cognex_Camera :
 STRUCT
 	// IO
-	Acquistion : S_Acquistion;
-	Command_Control : S_Command_Control;
-	Inspection : S_Inspection;
-	Soft_Event : S_Soft_event;
-	User_Data : S_User_Data;
+	AcquisitionControl AT %Q* : Acquisition_Control;
+	AcquisitionStatusRegister AT %I* : Acquisition_Status_Register;
+	AcquistionID AT %I* : UINT;
+	InspectionControlRegister AT %Q* : Inspection_Control_Register;
+	InspectionStatusRegister AT %I* : Inspection_Status_Register;
+	ErrorCode AT %I* : UINT;
+	CurrentJobID AT %I* : UINT;
+	Command AT %Q* : UINT;
+	SoftEventStatus AT %I* : SoftEvent;
+	SoftEventControl AT %I* : SoftEvent;
+	UserData AT %Q* : ARRAY[0..63] OF BYTE; // TODO grote bepalen on compile time
+	InspectionID AT %I* : UINT;
+	ResultCode AT %I* : UINT;
+	InspectionResults AT %I* : ARRAY[0..63] OF BYTE; // TODO grote bepalen on compile time
 	
 	// local var
 	Input_Buffer_Layout : Buffer_Layout;

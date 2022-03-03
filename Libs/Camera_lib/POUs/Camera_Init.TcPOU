@@ -7,7 +7,7 @@ VAR_IN_OUT
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[Camera.Acquistion.TriggerEnabel := TRUE;
+      <ST><![CDATA[Camera.AcquisitionControl.Acquistion_Trigger_Enable := TRUE;
 Camera.CameraState := Camera_State.Idel;]]></ST>
     </Implementation>
     <LineIds Name="Camera_Init">
