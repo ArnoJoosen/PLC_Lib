@@ -18,7 +18,7 @@
     <Company>Thomas More</Company>
     <Released>false</Released>
     <Title>Cognex_Camera</Title>
-    <ProjectVersion>0.0.1</ProjectVersion>
+    <ProjectVersion>0.1.1</ProjectVersion>
     <LibraryCategories>
       <LibraryCategory xmlns="">
         <Id>{c0f0b351-59c4-4605-bee8-aff2cb010a06}</Id>
@@ -33,22 +33,28 @@
     <Author>Arno Joosen</Author>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DUTs\CameraIO\S_Acquistion.TcDUT">
+    <Compile Include="DUTs\CameraIO\Acquisition_Control.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\CameraIO\S_Command_Control.TcDUT">
+    <Compile Include="DUTs\CameraIO\Acquisition_Status_Register.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\CameraIO\S_Inspection.TcDUT">
+    <Compile Include="DUTs\CameraIO\Inspection_Control_Register.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\CameraIO\S_Soft_event.TcDUT">
+    <Compile Include="DUTs\CameraIO\Inspection_Status_Register.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\CameraIO\S_User_Data.TcDUT">
+    <Compile Include="DUTs\CameraIO\SoftEvent.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\CameraIO\Soft_Event_Control.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\Camera_Error.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\Camera_Type.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\Cognex_Camera.TcDUT">

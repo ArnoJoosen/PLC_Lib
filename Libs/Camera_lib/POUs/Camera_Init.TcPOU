@@ -2,17 +2,22 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
   <POU Name="Camera_Init" Id="{a70b5ab6-a358-4ede-ad88-10f3494b78fb}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION Camera_Init : BOOL
+VAR_INPUT
+	CameraType : Camera_Type;
+END_VAR
 VAR_IN_OUT
 	Camera : Cognex_Camera;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[Camera.AcquisitionControl.Acquistion_Trigger_Enable := TRUE;
-Camera.CameraState := Camera_State.Idel;]]></ST>
+Camera.CameraState := Camera_State.Idel;
+Camera.CameraType := CameraType;]]></ST>
     </Implementation>
     <LineIds Name="Camera_Init">
       <LineId Id="7" Count="0" />
       <LineId Id="18" Count="0" />
+      <LineId Id="29" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

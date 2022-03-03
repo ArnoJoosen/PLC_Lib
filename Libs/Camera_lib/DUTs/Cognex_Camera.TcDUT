@@ -11,9 +11,10 @@ STRUCT
 	InspectionStatusRegister AT %I* : Inspection_Status_Register;
 	ErrorCode AT %I* : UINT;
 	CurrentJobID AT %I* : UINT;
-	Command AT %Q* : UINT;
+	Command_B AT %Q* : UINT;
+	Command AT%Q* : USINT;
 	SoftEventStatus AT %I* : SoftEvent;
-	SoftEventControl AT %I* : SoftEvent;
+	SoftEventControl AT %Q* : SoftEvent;
 	UserData AT %Q* : ARRAY[0..63] OF BYTE; // TODO grote bepalen on compile time
 	InspectionID AT %I* : UINT;
 	ResultCode AT %I* : UINT;
@@ -26,6 +27,7 @@ STRUCT
 	JobeState : Job_State;
 	CommandState : Command_State;
 	Error : Camera_Error := Camera_Error.None;
+	CameraType : Camera_Type;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

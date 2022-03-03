@@ -14,11 +14,11 @@ VAR
 	End : BOOL := FALSE;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF Camera.CameraState = Camera_State.Idel THEN
+      <ST><![CDATA[IF Camera.CameraState = Camera_State.Idel AND Camera.CameraType = Camera_Type.Cognex_7000 THEN
 	// set camera in offline mode
 	Camera.AcquisitionControl.Set_Offline := TRUE;
 	// set command to load job by name
-	Camera.Command := 16#4000;
+	Camera.Command_B := 16#4000;
 	// load name in input user buffer
 	UJobeName.StrVal := JobeName;
 	FOR i:=0 TO 63 BY 1 DO
@@ -37,20 +37,11 @@ ELSE
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="Camera_Load_Job">
+      <LineId Id="92" Count="2" />
       <LineId Id="7" Count="0" />
-      <LineId Id="18" Count="1" />
-      <LineId Id="22" Count="0" />
-      <LineId Id="20" Count="1" />
-      <LineId Id="28" Count="0" />
-      <LineId Id="23" Count="0" />
-      <LineId Id="25" Count="0" />
-      <LineId Id="29" Count="0" />
-      <LineId Id="35" Count="0" />
-      <LineId Id="32" Count="1" />
-      <LineId Id="30" Count="0" />
-      <LineId Id="26" Count="0" />
-      <LineId Id="36" Count="0" />
-      <LineId Id="38" Count="1" />
+      <LineId Id="108" Count="0" />
+      <LineId Id="96" Count="11" />
+      <LineId Id="53" Count="0" />
       <LineId Id="16" Count="1" />
       <LineId Id="15" Count="0" />
     </LineIds>

@@ -42,7 +42,7 @@ ELSIF Camera.InspectionStatusRegister.Error THEN
 		16#0402: // job load requested does not exist on the camera
 			Camera.Error := Camera_Error.Job_Does_Not_Exist;
 	END_CASE
-ELSIF Camera.JobeState = Job_State.Error THEN
+ELSIF Camera.JobeState = Job_State.Error OR Camera.JobeState = Job_State.Complte THEN
 	RETURN;
 ELSE
 	Camera.JobeState := Job_State.Error;
