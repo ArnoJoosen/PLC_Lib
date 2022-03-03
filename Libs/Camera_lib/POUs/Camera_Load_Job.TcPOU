@@ -16,21 +16,21 @@ END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF Camera.CameraState = Camera_State.Idel THEN
 	// set camera in offline mode
-	Camera.Acquistion.SetOffline := TRUE;
+	Camera.AcquisitionControl.Set_Offline := TRUE;
 	// set command to load job by name
-	Camera.Command_Control.Command := 16#4000;
+	Camera.Command := 16#4000;
 	// load name in input user buffer
 	UJobeName.StrVal := JobeName;
 	FOR i:=0 TO 63 BY 1 DO
 		IF UJobeName.StrVal[i] = 0 AND End THEN
-			Camera.User_Data[i] := 16#0; // set End
+			Camera.UserData[i] := 16#0; // set End
 			End := TRUE;
 		ELSE
-			Camera.User_Data[i] := UJobeName.StrVal[i];
+			Camera.UserData[i] := UJobeName.StrVal[i];
 		END_IF
 	END_FOR
 	// set execute
-	Camera.Inspection.ExecuteCommand := TRUE;
+	Camera.InspectionControlRegister.Execute_Command := TRUE;
 	Camera_Load_Job := TRUE;
 ELSE
 	Camera_Load_Job := FALSE;

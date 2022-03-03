@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="Acquisition_Status_Register" Id="{ff6e4c5c-ab80-422c-8803-9804ef2a7c97}">
+    <Declaration><![CDATA[TYPE Acquisition_Status_Register :
+STRUCT
+	Acquisition_Trigger_Ready : BIT;
+	Acquistion_Trigger_Acknowledge : BIT;
+	Exposure_Complete : BIT;
+	Missed_Acquisition : BIT;
+	Offline_Reason_0 : BIT;
+	Offline_Reason_1 : BIT;
+	Offline_Reason_2 : BIT;
+	Online : BIT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

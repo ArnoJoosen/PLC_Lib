@@ -8,8 +8,8 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF Camera.CameraState = Camera_State.Idel THEN
-	Camera.Acquistion.ClearExposure := TRUE;
-	Camera.Acquistion.Trigger := TRUE;
+	Camera.AcquisitionControl.Clear_Exposure_Complete := TRUE;
+	Camera.AcquisitionControl.Acquistion_Trigger := TRUE;
 	Camera.CameraState := Camera_State.Jope_Running;
 	Camera.JobeState := Job_State.TriggerAck;
 	Camera_Trigger := TRUE;
