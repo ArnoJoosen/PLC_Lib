@@ -30,7 +30,8 @@ END_VAR]]></Declaration>
 		END_IF
 	END_FOR
 	// set execute
-	Camera.InspectionControlRegister.Execute_Command := TRUE;
+	Camera.CameraState := Camera_State.Command_Running;
+	Camera.CommandState := Command_State.Set;
 	Camera_Load_Job := TRUE;
 ELSE
 	Camera_Load_Job := FALSE;
@@ -40,7 +41,8 @@ END_IF]]></ST>
       <LineId Id="92" Count="2" />
       <LineId Id="7" Count="0" />
       <LineId Id="108" Count="0" />
-      <LineId Id="96" Count="11" />
+      <LineId Id="96" Count="10" />
+      <LineId Id="122" Count="1" />
       <LineId Id="53" Count="0" />
       <LineId Id="16" Count="1" />
       <LineId Id="15" Count="0" />

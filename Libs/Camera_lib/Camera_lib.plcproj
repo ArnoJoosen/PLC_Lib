@@ -18,7 +18,7 @@
     <Company>Thomas More</Company>
     <Released>false</Released>
     <Title>Cognex_Camera</Title>
-    <ProjectVersion>0.1.1</ProjectVersion>
+    <ProjectVersion>0.1.2</ProjectVersion>
     <LibraryCategories>
       <LibraryCategory xmlns="">
         <Id>{c0f0b351-59c4-4605-bee8-aff2cb010a06}</Id>
@@ -70,6 +70,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\States\Job_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\Trigger_Error.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">

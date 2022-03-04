@@ -11,7 +11,7 @@ END_VAR]]></Declaration>
 ELSIF Camera.CameraState = Camera_State.Jope_Running THEN
 	Update_Jobe_State(Camera);
 ELSIF Camera.CameraState = Camera_State.Command_Running THEN
-	Update_Jobe_State(Camera);
+	Update_Command_State(Camera);
 ELSIF Camera.CameraState = Camera_State.Clear_Error THEN
 	Camera.InspectionControlRegister.Clear_Error := FALSE;
 	Camera.CameraState := Camera_State.Idel;

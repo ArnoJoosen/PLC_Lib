@@ -21,7 +21,7 @@
 			</Tasks>
 		</System>
 		<Plc>
-			<Project Disabled="true" GUID="{FF429566-39CC-45BA-B407-E3699E60242F}" Name="RFID_lib" PrjFilePath="RFID_lib\RFID_lib.plcproj" TmcFilePath="RFID_lib\RFID_lib.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+			<Project GUID="{FF429566-39CC-45BA-B407-E3699E60242F}" Name="RFID_lib" PrjFilePath="RFID_lib\RFID_lib.plcproj" TmcFilePath="RFID_lib\RFID_lib.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
 				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="RFID_lib\RFID_lib.tmc">
 					<Name>RFID_lib Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>

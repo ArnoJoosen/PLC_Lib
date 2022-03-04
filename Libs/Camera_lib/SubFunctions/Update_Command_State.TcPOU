@@ -9,7 +9,17 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF Camera.CommandState = Command_State.Wate THEN
+      <ST><![CDATA[IF Camera.CommandState = Command_State.Set THEN
+	IF NOT Camera.AcquisitionStatusRegister.Online THEN
+		Camera.InspectionControlRegister.Execute_Command := TRUE;
+		Camera.CommandState := Command_State.Exekute;
+	ELSE
+		RETURN;
+	END_IF;
+ELSIF Camera.CommandState = Command_State.Exekute THEN
+	Camera.InspectionControlRegister.Execute_Command := FALSE;
+	Camera.CommandState := Command_State.Wate;
+ELSIF Camera.CommandState = Command_State.Wate THEN
 	IF Camera.InspectionStatusRegister.Command_Complete THEN
 		Camera.CommandState := Command_State.Complete;
 		Camera.InspectionControlRegister.Execute_Command := FALSE;
@@ -54,6 +64,13 @@ ELSE
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="Update_Command_State">
+      <LineId Id="63" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="64" Count="1" />
+      <LineId Id="72" Count="1" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="66" Count="1" />
+      <LineId Id="69" Count="0" />
       <LineId Id="7" Count="0" />
       <LineId Id="9" Count="0" />
       <LineId Id="11" Count="0" />

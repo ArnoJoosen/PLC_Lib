@@ -1,15 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
-  <DUT Name="Command_State" Id="{aac0a895-fc07-40b3-9211-4fea18b9fe15}">
+  <DUT Name="Trigger_Error" Id="{8f72347c-78d0-4a33-b700-adf13de20256}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 {attribute 'strict'}
-TYPE Command_State :
+TYPE Trigger_Error :
 (
-	Set := 0,
-	Exekute := 1,
-	Wate := 2,
-	Complete := 3,
-	Error := 4
+	None := 0,
+	Camera_Busy := 1,
+	Camera_Not_Trigger_Redy := 2
 ) UINT;
 END_TYPE
 ]]></Declaration>
