@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="RFID_Get_Bool" Id="{dfceaa5d-6077-4deb-b6f7-508e955400ff}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION RFID_Get_Bool : Buffer_Error
+VAR_INPUT
+	Data : REFERENCE TO RFID_Tag_Data;
+	Num : USINT; 
+END_VAR
+VAR_IN_OUT
+	Out : BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[RFID_Get_Bool := Get_Bool_From_Buffer(Num:= Num, 
+									Layout:= Data.Layout, 
+									Buffer:= Data.Data, 
+									Out:= Out);	]]></ST>
+    </Implementation>
+    <LineIds Name="RFID_Get_Bool">
+      <LineId Id="14" Count="0" />
+      <LineId Id="20" Count="1" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

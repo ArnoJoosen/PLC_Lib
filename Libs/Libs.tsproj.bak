@@ -73,7 +73,7 @@
 					</TaskPouOids>
 				</Instance>
 			</Project>
-			<Project Disabled="true" GUID="{B790F670-7293-4179-A8D9-F28FFAA4C87E}" Name="Buffer_Lib" PrjFilePath="Buffer_Lib\Buffer_Lib.plcproj" TmcFilePath="Buffer_Lib\Buffer_Lib.tmc" ReloadTmc="true" AmsPort="854" FileArchiveSettings="#x000e" SymbolicMapping="true">
+			<Project GUID="{B790F670-7293-4179-A8D9-F28FFAA4C87E}" Name="Buffer_Lib" PrjFilePath="Buffer_Lib\Buffer_Lib.plcproj" TmcFilePath="Buffer_Lib\Buffer_Lib.tmc" ReloadTmc="true" AmsPort="854" FileArchiveSettings="#x000e" SymbolicMapping="true">
 				<Instance Id="#x085020c0" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Buffer_Lib\Buffer_Lib.tmc">
 					<Name>Buffer_Lib Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>

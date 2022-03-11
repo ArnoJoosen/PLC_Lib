@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="RFID_Tag_Data" Id="{bf391bfb-ca59-4505-8a33-8af90c8b446c}">
+    <Declaration><![CDATA[TYPE RFID_Tag_Data :
+STRUCT
+	Data : ARRAY[0..127] OF BYTE;
+	UID : Tag_UID;
+	Layout : Buffer_Layout;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

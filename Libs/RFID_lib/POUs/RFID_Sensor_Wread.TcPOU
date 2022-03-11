@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="RFID_Sensor_Wread" Id="{6df75545-5aac-4941-aef3-b7dd09fa2706}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION RFID_Sensor_Wread : BOOL
+VAR_INPUT
+	Data : REFERENCE TO RFID_Tag_Data;
+	P : UINT;
+END_VAR
+VAR_IN_OUT
+	Sensor : RFID_Sensor;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF (P < 64) AND (Sensor.State = RFID_SensorState.idel) THEN
+	Sensor.State := RFID_SensorState.WreadTag;
+	Sensor.WreadState := Wread_State.Triggerd;
+	Sensor.Pagina := P;
+	Sensor.TxBuffer := Data.Data;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="RFID_Sensor_Wread">
+      <LineId Id="16" Count="0" />
+      <LineId Id="22" Count="1" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="19" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

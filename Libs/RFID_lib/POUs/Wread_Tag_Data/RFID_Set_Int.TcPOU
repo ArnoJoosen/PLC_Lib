@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="RFID_Set_Int" Id="{6698fc84-29c9-4731-8d38-8d838367f97c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION RFID_Set_Int : Buffer_Error
+VAR_INPUT
+	In : INT;
+	Num : USINT; 
+END_VAR
+VAR_IN_OUT
+	Data : RFID_Tag_Data;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[RFID_Set_Int := Set_Int_From_Buffer(In:= In, 
+									Num:= Num, 
+									Layout:= Data.Layout, 
+									Buffer:= Data.Data);]]></ST>
+    </Implementation>
+    <LineIds Name="RFID_Set_Int">
+      <LineId Id="18" Count="0" />
+      <LineId Id="20" Count="1" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

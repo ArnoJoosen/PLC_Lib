@@ -5,8 +5,17 @@
 STRUCT
 	Input AT %I* : CompactInput_t;
 	Ouput AT %Q* : CompactOutput_t;
+	
 	Input_Buffer AT %I* : ARRAY[0..127] OF BYTE;
 	Output_Buffer AT %Q* : ARRAY[0..127] OF BYTE;
+	
+	TxBuffer : ARRAY[0..127] OF BYTE;
+	
+	State : RFID_SensorState := RFID_SensorState.idel;
+	ReadState : Read_State;
+	WreadState : Wread_State;
+	Pagina : UINT;
+	CurrentTagData : RFID_Tag_Data;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

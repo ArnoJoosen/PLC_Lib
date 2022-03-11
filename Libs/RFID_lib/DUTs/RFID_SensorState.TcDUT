@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="RFID_SensorState" Id="{74caafc1-b2a0-462d-9604-0cf83a484c4a}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE RFID_SensorState :
+(
+	idel := 0,
+	ReadTag := 1,
+	WreadTag := 2,
+	Error := 3
+) UINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -3,17 +3,25 @@
   <POU Name="RFID_Sensor_Read" Id="{d94d988c-3c6b-42c5-8f25-763312f3cffc}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION RFID_Sensor_Read : bool
 VAR_INPUT
-	Sensor : REFERENCE TO RFID_Sensor;
+	Layout : Buffer_Layout;
 	P : UINT;
 END_VAR
-VAR
-END_VAR
-]]></Declaration>
+VAR_IN_OUT
+	Sensor : RFID_Sensor;
+END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF (P < 64) AND (Sensor.State = RFID_SensorState.idel) THEN
+	Sensor.State := RFID_SensorState.ReadTag;
+	Sensor.ReadState := Read_State.Triggerd;
+	Sensor.Pagina := P;
+	Sensor.CurrentTagData.Layout := Layout;
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="RFID_Sensor_Read">
-      <LineId Id="7" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="27" Count="2" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="26" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
