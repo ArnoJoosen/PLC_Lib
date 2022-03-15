@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="Robot_Error" Id="{e9c4ff68-a5b5-4d44-88db-3c26df75ee58}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE Robot_Error :
+(
+	None := 0,
+	Not_Power_On := 1,
+	Not_Running := 2,
+	Protective_Stopped := 3,
+	Safeguard_Stopped := 4,
+	System_Emergency_Stopped := 5,
+	Robot_Emergency_Stopped := 6,
+	Emergency_Stopped := 7,
+	Stopped_Due_To_Safety := 8,
+	Profinet := 9
+) UINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

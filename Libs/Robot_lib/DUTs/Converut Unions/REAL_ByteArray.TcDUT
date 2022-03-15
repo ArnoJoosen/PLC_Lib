@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="REAL_ByteArray" Id="{35842edd-688a-4158-ae10-6a61dec30e57}">
+    <Declaration><![CDATA[TYPE REAL_ByteArray :
+UNION
+	AValue : ARRAY[0..4] OF BYTE;
+	Value : REAL;
+END_UNION
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

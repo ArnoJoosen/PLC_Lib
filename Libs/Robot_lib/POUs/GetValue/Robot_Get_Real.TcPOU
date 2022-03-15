@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Robot_Get_Real" Id="{e755ea50-a855-40d3-b5cd-7b462e1f6c08}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Robot_Get_Real : BOOL
+VAR_INPUT
+	Num : UINT;
+END_VAR
+VAR_IN_OUT
+	Robot : UR3e_Robot;
+	Value : REAL;
+END_VAR
+VAR
+	Row : UINT;
+	REALArray : REAL_ByteArray;
+	i : UINT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF Num <= 23 THEN
+	Row := Num * 4;
+	FOR i:=0 TO 3 BY 1 DO
+		REALArray.AValue[3-i] := Robot.GPR_REAL[Row+i];
+	END_FOR
+	
+	Value := REALArray.Value;
+	Robot_Get_Int := TRUE;
+ELSE
+	Robot_Get_Int := FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Robot_Get_Real">
+      <LineId Id="40" Count="9" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

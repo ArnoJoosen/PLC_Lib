@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Robot_Set_Bool" Id="{f92eca0f-cfed-407f-8455-948503b3a4b6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Robot_Set_Bool : BOOL
+VAR_INPUT
+	Num : UINT;
+	Value : BOOL;
+END_VAR
+VAR_IN_OUT
+	Robot : UR3e_Robot;
+END_VAR
+VAR
+	Row : UINT;
+	Colom : UINT;
+	BitArray : BitStruct_Byte;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF Num = 0 OR Num > 63 THEN
+	Robot_Set_Int := FALSE;
+	RETURN;
+END_IF
+
+IF Num < 32 THEN
+	Row := Num / 8; // bereken de index in de buffer
+	Colom := Num MOD 8; // berken de bit nummer in de byte
+	BitArray.Value := RObot.GPR1[Row];
+	CASE Colom OF
+		0:
+			BitArray.SValue.Bit0  := Value;
+		1:
+			BitArray.SValue.Bit1  := Value;
+		2:
+			BitArray.SValue.Bit2  := Value;		
+		3:
+			BitArray.SValue.Bit3  := Value;
+		4:
+			BitArray.SValue.Bit4  := Value;
+		5:
+			BitArray.SValue.Bit5  := Value;
+		6:
+			BitArray.SValue.Bit6  := Value;
+		7:
+			BitArray.SValue.Bit7  := Value;
+	END_CASE
+	RObot.GPR1[Row] := BitArray.Value;
+	Robot_Set_Int := TRUE;
+	RETURN;
+	
+ELSIF Num > 31 THEN
+	Row := (Num-32) / 8; // bereken de index in de buffer
+	Colom := (Num-32) MOD 8; // berken de bit nummer in de byte
+	BitArray.Value := RObot.GPR2[Row];
+	CASE Colom OF
+		0:
+			BitArray.SValue.Bit0  := Value;
+		1:
+			BitArray.SValue.Bit1  := Value;
+		2:
+			BitArray.SValue.Bit2  := Value;		
+		3:
+			BitArray.SValue.Bit3  := Value;
+		4:
+			BitArray.SValue.Bit4  := Value;
+		5:
+			BitArray.SValue.Bit5  := Value;
+		6:
+			BitArray.SValue.Bit6  := Value;
+		7:
+			BitArray.SValue.Bit7  := Value;
+	END_CASE
+	RObot.GPR2[Row] := BitArray.Value;
+	Robot_Set_Int := TRUE;
+	RETURN;
+	
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Robot_Set_Bool">
+      <LineId Id="90" Count="2" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="35" Count="1" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="50" Count="1" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="93" Count="1" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="68" Count="18" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="97" Count="0" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="18" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

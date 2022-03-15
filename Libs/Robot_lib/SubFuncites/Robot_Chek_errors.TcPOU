@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Robot_Chek_errors" Id="{b2ccf133-0e50-4c45-a967-88e5cddc0403}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Robot_Chek_errors : Robot_Error
+VAR_INPUT
+	Robot : UR3e_Robot;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF NOT((Robot.RobotState_And_Safety[16] AND 2#00000001) = 2#00000001) THEN // Not Power On
+	Robot_Chek_errors := Robot_Error.Not_Power_On;
+ELSIF NOT ((Robot.RobotState_And_Safety[16] AND 2#00000010) = 2#00000010) THEN // Not Running
+	Robot_Chek_errors := Robot_Error.Not_Running;
+ELSIF (Robot.RobotState_And_Safety[28] AND 2#00000100) = 2#00000100 THEN // Protective Stopped
+	Robot_Chek_errors := Robot_Error.Protective_Stopped;
+ELSIF (Robot.RobotState_And_Safety[28] AND 2#00010000) = 2#00010000 THEN // Safeguard Stopped
+	Robot_Chek_errors := Robot_Error.Safeguard_Stopped;
+ELSIF (Robot.RobotState_And_Safety[28] AND 2#00100000) = 2#00100000 THEN // System Emergency Stopped
+	Robot_Chek_errors := Robot_Error.System_Emergency_Stopped;
+ELSIF (Robot.RobotState_And_Safety[28] AND 2#01000000) = 2#01000000 THEN // Robot Emergency Stopped
+	Robot_Chek_errors := Robot_Error.Robot_Emergency_Stopped;
+ELSIF (Robot.RobotState_And_Safety[28] AND 2#10000000) = 2#10000000 THEN // Emergency Stopped
+	Robot_Chek_errors := Robot_Error.Emergency_Stopped;
+ELSIF (Robot.RobotState_And_Safety[29] AND 2#00000100) = 2#00000100 THEN // Stopped Due To Safety
+	Robot_Chek_errors := Robot_Error.Stopped_Due_To_Safety;
+ELSIF NOT(Robot.PnioBoxState = 0) THEN // profinet error
+	Robot_Chek_errors := Robot_Error.Profinet;
+ELSE
+	Robot_Chek_errors := Robot_Error.None;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Robot_Chek_errors">
+      <LineId Id="7" Count="0" />
+      <LineId Id="41" Count="1" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="22" Count="3" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="36" Count="1" />
+      <LineId Id="34" Count="1" />
+      <LineId Id="18" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

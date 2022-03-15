@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="INT_ByteArray" Id="{9a8d7ba8-820a-4293-8bd0-0dc733158a3b}">
+    <Declaration><![CDATA[TYPE INT_ByteArray :
+UNION
+	AValue : ARRAY[0..4] OF BYTE;
+	Value : DINT;
+END_UNION
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -15,18 +15,80 @@
     <Implicit_KindOfTask>{8ae5f06d-8005-43c5-ae4f-24cfa1690b9c}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{c2a7a510-dc0b-433c-8e17-8003ed43f92a}</Implicit_Jitter_Distribution>
     <LibraryReferences>{584922b3-5888-4900-923e-f1f5875e1479}</LibraryReferences>
+    <Company>Thomas More</Company>
+    <Released>false</Released>
+    <Title>UR3e_Robot</Title>
+    <ProjectVersion>1.0.0</ProjectVersion>
+    <LibraryCategories>
+      <LibraryCategory xmlns="">
+        <Id>{c0f0b351-59c4-4605-bee8-aff2cb010a06}</Id>
+        <Version>1.0.0.0</Version>
+        <DefaultName>ArnoLib</DefaultName>
+      </LibraryCategory>
+    </LibraryCategories>
+    <SelectedLibraryCategories>
+      <Id xmlns="">{c0f0b351-59c4-4605-bee8-aff2cb010a06}</Id>
+    </SelectedLibraryCategories>
+    <DefaultNamespace>UR3e_Robot</DefaultNamespace>
+    <Author>Arno Joosen</Author>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\Converut Unions\BitStruct_Byte.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\Converut Unions\ByteStruct.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\Converut Unions\INT_ByteArray.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\Converut Unions\REAL_ByteArray.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\Robot_Error.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\UR3e_Robot.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\MAIN.TcPOU">
+    <Compile Include="POUs\GetValue\Robot_Get_Bool.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\GetValue\Robot_Get_Int.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\GetValue\Robot_Get_Real.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Robot_Start_Job.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Robot_Update.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\SetValue\Robot_Set_Bool.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\SetValue\Robot_Set_Int.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\SetValue\Robot_Set_Real.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SubFuncites\Robot_Chek_errors.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
+    <Folder Include="DUTs\Converut Unions" />
     <Folder Include="GVLs" />
+    <Folder Include="SubFuncites" />
+    <Folder Include="POUs\GetValue" />
+    <Folder Include="POUs\SetValue" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

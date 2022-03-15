@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Robot_Get_Bool" Id="{f8fb4edd-f297-4b1e-b458-2676498a2845}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Robot_Get_Bool : BOOL
+VAR_INPUT
+	Num : UINT;
+END_VAR
+VAR_IN_OUT
+	Robot : UR3e_Robot;
+	Value : BOOL;
+END_VAR
+VAR
+	Row : UINT;
+	Colom : UINT;
+	BitArray : BitStruct_Byte;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF Num <= 63 AND (NOT (Num = 0)) THEN
+	Row := Num/8;
+	Colom := Num MOD 8;
+	BitArray.Value := Robot.GPR_BIT[Row];
+	CASE Colom OF
+		0:
+			Value := BitArray.SValue.Bit0;
+		1:
+			Value := BitArray.SValue.Bit1;
+		2:
+			Value := BitArray.SValue.Bit2;		
+		3:
+			Value := BitArray.SValue.Bit3;
+		4:
+			Value := BitArray.SValue.Bit4;
+		5:
+			Value := BitArray.SValue.Bit5;
+		6:
+			Value := BitArray.SValue.Bit6;
+		7:
+			Value := BitArray.SValue.Bit7;
+	END_CASE
+	Robot_Get_Bool := TRUE;
+ELSE
+	Robot_Get_Bool := FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Robot_Get_Bool">
+      <LineId Id="7" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="28" Count="1" />
+      <LineId Id="33" Count="16" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="50" Count="2" />
+      <LineId Id="27" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

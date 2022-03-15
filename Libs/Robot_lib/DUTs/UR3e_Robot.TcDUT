@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="UR3e_Robot" Id="{76d9dec0-05f7-4fa0-b56f-9183f5292f5b}">
+    <Declaration><![CDATA[TYPE UR3e_Robot :
+STRUCT
+	// input
+	PnioBoxState AT %I* : UINT;
+		//0 = No error
+		//1 = Profinet device state machine is in boot mode
+		//2 = Device not found
+		//3 = The stationname is not unique
+		//4 = IP could not be set
+		//5 = IP conflict
+		//6 = DCP set was not successful
+		//7 = Watchdog error
+		//8 = Datahold error
+		//9 = RTC3: Sync mode could not be initiated
+		//10 = Profinet controller has a link error
+		//11 = The aliasname is not unique
+		//12 = The automatic name assignement isn't possible - wrong device type
+		//13 = IOC-AR is established but no application ready
+		//14 = IOC-AR is established but module difference
+		//15 = At least one InputCR is invalid, provider in stop or problemindicator is set
+		//16 = At least one OutputCR is invalid, provider in stop or problemindicator is set
+		//31 = Only for EtherCAT gateways: WC-State of cyclic EtherCAT frame is 1
+	RobotState_And_Safety AT %I* : ARRAY[0..31] OF BYTE;
+	GPR_BIT AT %I* : ARRAY[0..7] OF BYTE;
+	GPR_INT AT %I* : ARRAY[0..95] OF BYTE;
+	GPR_REAL AT %I* : ARRAY[0..95] OF BYTE;
+
+	// ouput
+	GPR1 AT %Q* : ARRAY[0..99] OF BYTE;
+	GPR2 AT %Q* : ARRAY[0..99] OF BYTE;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="ByteStruct" Id="{d0b657f1-ad69-473a-b8a0-ba8125ab45c0}">
+    <Declaration><![CDATA[TYPE ByteStruct :
+STRUCT
+	Bit0 : BIT;
+	Bit1 : BIT;
+	Bit2 : BIT;
+	Bit3 : BIT;
+	Bit4 : BIT;
+	Bit5 : BIT;
+	Bit6 : BIT;
+	Bit7 : BIT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

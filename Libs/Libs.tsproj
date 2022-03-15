@@ -53,7 +53,7 @@
 					</TaskPouOids>
 				</Instance>
 			</Project>
-			<Project Disabled="true" GUID="{4AF165BE-8517-4FC5-8F26-27F1799AEA29}" Name="Robot_lib" PrjFilePath="Robot_lib\Robot_lib.plcproj" TmcFilePath="Robot_lib\Robot_lib.tmc" ReloadTmc="true" AmsPort="853" FileArchiveSettings="#x000e" SymbolicMapping="true">
+			<Project GUID="{4AF165BE-8517-4FC5-8F26-27F1799AEA29}" Name="Robot_lib" PrjFilePath="Robot_lib\Robot_lib.plcproj" TmcFilePath="Robot_lib\Robot_lib.tmc" ReloadTmc="true" AmsPort="853" FileArchiveSettings="#x000e" SymbolicMapping="true">
 				<Instance Id="#x08502080" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Robot_lib\Robot_lib.tmc">
 					<Name>Robot_lib Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>

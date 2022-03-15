@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Robot_Update" Id="{b5d7f035-0ac8-48b6-b8af-7218a9f22efd}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Robot_Update
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+	Free : BOOL;
+	Error : Robot_Error;
+END_VAR
+VAR_IN_OUT
+	Robot : UR3e_Robot;
+END_VAR
+VAR
+	bitArray : BitStruct_Byte;
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Error := Robot_Chek_errors(Robot:= Robot);
+
+// chek of robot bezig is
+IF (Robot.GPR_BIT[0] AND 2#00000001) = 2#00000001 THEN
+	// zet run varibel FALSE zo dat robot de job niet bleift heralen
+	bitArray.Value := Robot.GPR1[0];
+	bitArray.SValue.Bit0 := FALSE;
+	Robot.GPR1[0] := bitArray.Value;
+	Free := FALSE;
+ELSE
+	Free := TRUE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Robot_Update">
+      <LineId Id="28" Count="2" />
+      <LineId Id="32" Count="4" />
+      <LineId Id="40" Count="2" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

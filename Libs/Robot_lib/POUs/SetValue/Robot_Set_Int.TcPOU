@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Robot_Set_Int" Id="{4ca1c3e2-f8a4-4f8e-8928-187c4f9d69f6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Robot_Set_Int : BOOL
+VAR_INPUT
+	Num : UINT;
+	Value : DINT;
+END_VAR
+VAR_IN_OUT
+	Robot : UR3e_Robot;
+END_VAR
+VAR
+	Row : UINT;
+	INTArray : INT_ByteArray;
+	i : UINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF Num = 0 OR Num > 23 THEN
+	Robot_Set_Int := FALSE;
+	RETURN;
+END_IF
+
+IF Num < 12 THEN
+	INTArray.Value := Value;
+	Row := (Num * 4) + 4; // bereken start byte in buffer
+	FOR i:=0 TO 3 BY 1 DO // copy data
+		Robot.GPR1[Row+i] := INTArray.AValue[3-i];
+	END_FOR
+	Robot_Set_Int := TRUE;
+	RETURN;
+ELSIF Num > 11 THEN
+	INTArray.Value := Value;
+	Row := ((Num - 12) * 4) + 4; // bereken start byte in buffer
+	FOR i:=0 TO 3 BY 1 DO // copy data
+		Robot.GPR2[Row+i] := INTArray.AValue[3-i];
+	END_FOR
+	Robot_Set_Int := TRUE;
+	RETURN;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Robot_Set_Int">
+      <LineId Id="35" Count="1" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="32" Count="1" />
+      <LineId Id="40" Count="1" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="45" Count="1" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="42" Count="1" />
+      <LineId Id="24" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
